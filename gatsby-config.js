@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: 'Théâtre Nout',
-    siteUrl: 'https://sharp-dubinsky-10793e.netlify.com/',
+    siteUrl: 'https://sleepy-engelbart-26bbf2.netlify.com/',
     titleSeparator: ' ✴ ',
     description: 'Petit écrin qui vous emmène dans son univers oriental, situé à 15 minutes de Paris intra-muros, le Théâtre Nout et son équipe sont prêts à vous accueillir à bras ouverts.',
     company: {

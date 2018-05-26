@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: zecakeh/tn-test
+  repo: theatrenout/theatrenout.com
 
 publish_mode: editorial_workflow
 
@@ -23,7 +23,7 @@ collections:
             name: "url"
             widget: "custompathimage"
             customMediaPath: "../images/"
-            rawMediaPath: "https://raw.githubusercontent.com/zecakeh/tn-test/master/content/images/"
+            rawMediaPath: "https://raw.githubusercontent.com/theatrenout/theatrenout.com/master/content/images/"
           - {label: "Citation", name: "quote", widget: "string", required: false}
           - {label: "Description", name: "description", widget: "text", required: false}
           - {label: "Copyright", name: "copyright", widget: "string"}
@@ -70,12 +70,12 @@ collections:
         name: "poster"
         widget: "custompathimage"
         customMediaPath: "../images/"
-        rawMediaPath: "https://raw.githubusercontent.com/zecakeh/tn-test/master/content/images/"
+        rawMediaPath: "https://raw.githubusercontent.com/theatrenout/theatrenout.com/master/content/images/"
       - label: "Image principale (1920x1440px maximum)"
         name: "image"
         widget: "custompathimage"
         customMediaPath: "../images/"
-        rawMediaPath: "https://raw.githubusercontent.com/zecakeh/tn-test/master/content/images/"
+        rawMediaPath: "https://raw.githubusercontent.com/theatrenout/theatrenout.com/master/content/images/"
       - {label: "Bande-annonce (lien youtube)", name: "trailer", widget: "youtube", required: false}
       - {label: "Résumé (2 lignes maximum)", name: "overview", widget: "text"}
       - label: "Avis des spectateurs (5 maximum)"
