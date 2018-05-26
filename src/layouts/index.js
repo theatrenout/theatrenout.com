@@ -143,7 +143,6 @@ export default class MainLayout extends React.Component {
           <meta name="msapplication-square310x310logo" content="/favicon_310.png" />
           <meta name="theme-color" content={theme.color.primary} />
           <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-          <meta name="robots" content="noindex" />
         </Helmet>
         <Body
           onSwipingRight={this.onSwipingRight}
