@@ -1,0 +1,109 @@
+backend:
+  name: github
+  repo: zecakeh/tn-test
+
+publish_mode: editorial_workflow
+
+media_folder: content/images
+
+collections:
+  - name: "galleries"
+    label: "Galeries"
+    folder: "content/galleries"
+    create: true
+    fields:
+      - {label: "Layout", name: "layout", widget: "hidden", default: "gallery"}
+      - {label: "Nom du spectacle", name: "title", widget: "string"}
+      - label: "Images"
+        name: "images"
+        widget: "list"
+        fields:
+          - {label: "Nom", name: "title", widget: "string"}
+          - label: "Image (1920x1440px maximum)"
+            name: "url"
+            widget: "custompathimage"
+            customMediaPath: "../images/"
+            rawMediaPath: "https://raw.githubusercontent.com/zecakeh/tn-test/master/content/images/"
+          - {label: "Citation", name: "quote", widget: "string", required: false}
+          - {label: "Description", name: "description", widget: "text", required: false}
+          - {label: "Copyright", name: "copyright", widget: "string"}
+  - name: "spectacles"
+    label: "Spectacles"
+    folder: "content/spectacles"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Layout", name: "layout", widget: "hidden", default: "spectacle"}
+      - {label: "Nom", name: "title", widget: "string"}
+      - {label: "Sous-titre (auteur...)", name: "subtitle", widget: "text", required: false}
+      - {label: "Date de création", name: "creation", widget: "monthpicker", required: false}
+      - label: "Durée"
+        name: "duration"
+        required: false
+        widget: "object"
+        fields:
+          - {label: "HH:MM", name: "time", widget: "timepicker", required: false}
+          - {label: "Entracte", name: "intermission", widget: "boolean", default: false}
+      - {label: "Avertissement", name: "notice", widget: "string", required: false}
+      - {label: "Afficher dans la liste des spectacles de la troupe", name: "list", widget: "boolean", default: false}
+      - label: "Catégories"
+        name: "categories"
+        widget: "multipleselect"
+        options: ["Adulte", "Tout public", "Jeune public", "Troupe"]
+      - label: "Programmation"
+        name: "shows"
+        required: false
+        widget: "object"
+        fields:
+          - {label: "Date à annoncer (si la date de la première n'est pas sûre)", name: "customdate", widget: "monthpicker", required: false}
+          - {label: "Avant-première", name: "preview", widget: "datetimepicker", required: false}
+          - label: "Représentations"
+            name: "dates"
+            widget: "list"
+            fields:
+              - {label: "Heure", name: "time", widget: "timepicker", format: "HH:mm"}
+              - label: "Jours"
+                name: "days"
+                widget: "agenda"
+          - {label: "Lien pour les réservations", name: "reservation", widget: "string"}
+      - label: "Affiche (764x1080px)"
+        name: "poster"
+        widget: "custompathimage"
+        customMediaPath: "../images/"
+        rawMediaPath: "https://raw.githubusercontent.com/zecakeh/tn-test/master/content/images/"
+      - label: "Image principale (1920x1440px maximum)"
+        name: "image"
+        widget: "custompathimage"
+        customMediaPath: "../images/"
+        rawMediaPath: "https://raw.githubusercontent.com/zecakeh/tn-test/master/content/images/"
+      - {label: "Bande-annonce (lien youtube)", name: "trailer", widget: "youtube", required: false}
+      - {label: "Résumé (2 lignes maximum)", name: "overview", widget: "text"}
+      - label: "Avis des spectateurs (5 maximum)"
+        name: "comments"
+        required: false
+        widget: "list"
+        fields:
+          - {label: "Auteur", name: "author", widget: "string"}
+          - {label: "Texte (2 lignes maximum)", name: "text", widget: "text"}
+      - label: "Équipe"
+        name: "cast"
+        required: false
+        widget: "list"
+        fields:
+          - {label: "Fonction (par ex. mise en scène)", name: "role", widget: "string"}
+          - {label: "Nom(s), une personne par ligne", name: "names", widget: "text"}
+      - label: "À propos de l'œuvre"
+        name: "play"
+        required: false
+        widget: "markdown"
+      - label: "Intentions"
+        name: "intent"
+        required: false
+        widget: "markdown"
+      - label: "Avis de la presse"
+        name: "press"
+        required: false
+        widget: "list"
+        fields:
+          - {label: "Auteur", name: "author", widget: "string"}
+          - {label: "Texte", name: "text", widget: "markdown"}
