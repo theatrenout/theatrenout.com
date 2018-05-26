@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: 'Théâtre Nout',
-    siteUrl: 'https://sleepy-engelbart-26bbf2.netlify.com/',
+    siteUrl: 'https://www.theatrenout.com/',
     titleSeparator: ' ✴ ',
     description: 'Petit écrin qui vous emmène dans son univers oriental, situé à 15 minutes de Paris intra-muros, le Théâtre Nout et son équipe sont prêts à vous accueillir à bras ouverts.',
     company: {
@@ -92,8 +92,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-nprogress`,
       options: {
-        color: `#c6c9dc`,
-        showSpinner: false,
+        color: `#1e2c88`,
+        showSpinner: true,
       },
     },
     {

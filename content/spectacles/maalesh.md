@@ -9,20 +9,6 @@ list: true
 categories:
   - Tout public
   - Troupe
-shows:
-  preview: '2018-05-07T20:00:00+02:00'
-  dates:
-    - time: '20:00'
-      days:
-      - '2018-05-08'
-      - '2018-05-09'
-      - '2018-05-14'
-      - '2018-05-15'
-      - '2018-05-16'
-      - '2018-05-21'
-      - '2018-05-22'
-      - '2018-05-23'
-  reservation: 'http://www.billetreduc.com/'
 poster: ../images/maalesh-affiche.jpg
 image: ../images/maalesh-1.jpg
 overview: >-
