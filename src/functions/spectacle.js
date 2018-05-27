@@ -1,4 +1,5 @@
 import Shows from "./shows";
+import { MONTHS_LONG } from "../locale/fr_FR";
 
 const Spectacle = {
   getTags: function(categories, duration, shows, notice, creation, exclude = []) {
@@ -47,8 +48,8 @@ const Spectacle = {
       tags.push({type: 'duration', icon: 'clock', color: null, text: 'Durée : ' + durationString});
     }
     if (creation) {
-      const creationDate = new Date(creation);
-      tags.push({type: 'creation', icon: 'creation', color: null, text: 'Créé en ' +  Intl.DateTimeFormat('fr-FR', { year: 'numeric', month: 'long' }).format(creationDate)});
+      const creationArray = creation.split('-');
+      tags.push({type: 'creation', icon: 'creation', color: null, text: 'Créé en ' + MONTHS_LONG[parseInt(creationArray[1])-1] + ' ' + creationArray[0] });
     }
     if (notice) {
       tags.push({type: 'notice', icon: 'warning', color: 'red', text: notice});

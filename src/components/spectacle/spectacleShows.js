@@ -62,17 +62,17 @@ class StartEnd extends React.Component {
 
     if (dateFrom.getTime() != dateTo.getTime()) {
       if (dateFrom.getYear() != dateTo.getYear()) {
-        yearFrom = dateFrom.toLocaleDateString('fr-FR', { year: 'numeric'});
+        yearFrom = dateFrom.getFullYear().toString();
       }
-      yearTo = dateTo.toLocaleDateString('fr-FR', { year: 'numeric'});
-      monthTo = dateTo.toLocaleDateString('fr-FR', { month: 'long'});
-      dayTo = dateTo.toLocaleDateString('fr-FR', { day: 'numeric'});
+      yearTo = dateTo.getFullYear().toString();
+      monthTo = MONTHS_LONG[dateTo.getMonth()];
+      dayTo = dateTo.getDate().toString();
     }
     else {
-      yearFrom = dateFrom.toLocaleDateString('fr-FR', { year: 'numeric'});
+      yearFrom = dateFrom.getFullYear().toString();
     }
-    const dayFrom = dateFrom.toLocaleDateString('fr-FR', { day: 'numeric'});
-    const monthFrom = dateFrom.toLocaleDateString('fr-FR', { month: 'long'});
+    const dayFrom = dateFrom.getDate().toString();
+    const monthFrom = MONTHS_LONG[dateTo.getMonth()];
 
     return {
       yearFrom: yearFrom,
@@ -329,23 +329,16 @@ const ShowsContainer = styled.div`
 `;
 
 class SpectacleShows extends React.Component {
-  constructor(props){
-    super(props);
-
-    this.hasCustomDate = Shows.isCustomDate(this.props.customDate);
-
-    if (this.hasCustomDate) {
-      const customDateArray = this.props.customDate.split('-');
-      this.customDateString = 'En ' + MONTHS_LONG[parseInt(customDateArray[1])-1] + ' ' + customDateArray[0];
-    }
-  }
-
   render() {
-    const hasUpcomingPreview = !this.hasCustomDate && Shows.hasUpcomingPreview(this.props.preview);
-    const hasUpcomingShows = !this.hasCustomDate && Shows.hasUpcomingShows(this.props.shows)
+    const hasCustomDate = Shows.isCustomDate(this.props.customDate);
+    const hasUpcomingPreview = !hasCustomDate && Shows.hasUpcomingPreview(this.props.preview);
+    const hasUpcomingShows = !hasCustomDate && Shows.hasUpcomingShows(this.props.shows)
     const showsData = hasUpcomingShows ? Shows.getShowsData(this.props.shows) : null;
 
-    if (this.hasCustomDate) {
+    if (hasCustomDate) {
+      const customDateArray = this.props.customDate.split('-');
+      const customDateString = 'En ' + MONTHS_LONG[parseInt(customDateArray[1])-1] + ' ' + customDateArray[0];
+
       return (
         <ShowsContainer
           className={this.props.className}
@@ -353,7 +346,7 @@ class SpectacleShows extends React.Component {
           <StartEndContainer
             theme={this.props.theme}
           >
-            {this.customDateString}
+            {customDateString}
           </StartEndContainer>
         </ShowsContainer>
       );
