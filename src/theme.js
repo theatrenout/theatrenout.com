@@ -2,7 +2,7 @@ import "typeface-suez-one";
 
 const theme = {
   color: {
-    default: '#777777',
+    default: '#444444',
     primary: '#1e2c88',
     lighter: 'white',
     light: '#c6c9dc',

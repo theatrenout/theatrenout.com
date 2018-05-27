@@ -238,7 +238,7 @@ class Icon extends React.Component {
     return (
       <IconSVG
         xmlns="http://www.w3.org/2000/svg"
-        aria-labelledby={title ? 'title' + type : null}
+        aria-labelledby={title ? 'title-' + type : null}
         role={title ? null : 'presentation'}
         viewBox={this.iconPath[type].viewBox}
         {...others}

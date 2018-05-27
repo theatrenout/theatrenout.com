@@ -3,7 +3,7 @@ import styled from "styled-components";
 import PropTypes from "prop-types";
 
 import theme from "../../theme";
-import { WEEKDAYS_LONG } from "../../locale/fr_FR";
+import { WEEKDAYS_LONG, MONTHS_LONG } from "../../locale/fr_FR";
 import Shows from "../../functions/shows";
 
 
@@ -329,17 +329,23 @@ const ShowsContainer = styled.div`
 `;
 
 class SpectacleShows extends React.Component {
+  constructor(props){
+    super(props);
+
+    this.hasCustomDate = Shows.isCustomDate(this.props.customDate);
+
+    if (this.hasCustomDate) {
+      const customDateArray = this.props.customDate.split('-');
+      this.customDateString = 'En ' + MONTHS_LONG[parseInt(customDateArray[1])-1] + ' ' + customDateArray[0];
+    }
+  }
 
   render() {
-    const hasCustomDate = Shows.isCustomDate(this.props.customDate);
-    const hasUpcomingPreview = !hasCustomDate && Shows.hasUpcomingPreview(this.props.preview);
-    const hasUpcomingShows = !hasCustomDate && Shows.hasUpcomingShows(this.props.shows)
+    const hasUpcomingPreview = !this.hasCustomDate && Shows.hasUpcomingPreview(this.props.preview);
+    const hasUpcomingShows = !this.hasCustomDate && Shows.hasUpcomingShows(this.props.shows)
     const showsData = hasUpcomingShows ? Shows.getShowsData(this.props.shows) : null;
 
-    if (hasCustomDate) {
-      const customDate = new Date(this.props.customDate);
-      const customDateString = 'En ' + Intl.DateTimeFormat('fr-FR', { year: 'numeric', month: 'long' }).format(customDate);
-
+    if (this.hasCustomDate) {
       return (
         <ShowsContainer
           className={this.props.className}
@@ -347,7 +353,7 @@ class SpectacleShows extends React.Component {
           <StartEndContainer
             theme={this.props.theme}
           >
-            {customDateString}
+            {this.customDateString}
           </StartEndContainer>
         </ShowsContainer>
       );
