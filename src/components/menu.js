@@ -151,13 +151,13 @@ class Menu extends React.Component {
               <NavLink to="/explorer" onClick={this.props.onCloseMenu}>Explorer</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink to="/formation" onClick={this.props.onCloseMenu}>Formation</NavLink>
-            </NavItem>
-            <NavItem>
               <NavLink to="/location" onClick={this.props.onCloseMenu}>Location</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink to="/la-compagnie" onClick={this.props.onCloseMenu}>La compagnie</NavLink>
+              <NavLink to="/notre-histoire" onClick={this.props.onCloseMenu}>Notre histoire</NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink to="/nous-rejoindre" onClick={this.props.onCloseMenu}>Nous rejoindre</NavLink>
             </NavItem>
             <NavItem>
               <NavLink to="/informations-pratiques" onClick={this.props.onCloseMenu}>Informations pratiques</NavLink>
