@@ -80,8 +80,8 @@ export default class CompagniePage extends React.Component {
       })
     })
     navLinks.push({
-      url: '#des-spectacles',
-      text: 'Des spectacles',
+      url: '#nos-spectacles',
+      text: 'Nos spectacles',
     })
 
     return navLinks;
@@ -271,8 +271,8 @@ export default class CompagniePage extends React.Component {
           </React.Fragment>
         ))}
         <StyledSection
-          id="des-spectacles"
-          title="Des spectacles"
+          id="nos-spectacles"
+          title="Nos spectacles"
         >
           <p>Depuis la création de la compagnie en 1997, Hazem El Awadly a
           adapté et mis en scène plus de 20 spectacles, que ce soit pour des
