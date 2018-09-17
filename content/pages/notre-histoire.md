@@ -1,12 +1,12 @@
 ---
 layout: page
-title: La compagnie
+title: Notre histoire
 image: ../images/accueil-6.jpg
 overview: |-
   Le Théâtre Nout, c'est avant tout la compagnie qui le gère.
   Vous découvrirez ici ses origines, ses membres et ses spectacles.
 sections:
-  - title: Une belle histoire
+  - title: La création
     content: >-
       Le **Théâtre Nout** a été créé grâce à la passion, la force et détermination d'une personne : **Hazem El Awadly**.
 
