@@ -17,16 +17,6 @@ import slugify from "../functions/slugify";
 import Navigation from "../components/navigation";
 
 
-const FicheSection = styled(StyledSection)`
-  align-items: center;
-`
-
-const Fiche = styled(Navigation).attrs({
-  type: 'anchor',
-})`
-  margin: 1rem auto;
-`
-
 export default class FormationPage extends React.Component {
   constructor(props) {
     super(props);
@@ -263,17 +253,6 @@ export default class FormationPage extends React.Component {
             : null }
           </React.Fragment>
         ))}
-        <FicheSection
-          id="fiche-inscription"
-        >
-          <Fiche
-            href={this.props.data.ficheInscription.publicURL}
-            download="Fiche-inscription.pdf"
-            icon="file"
-          >
-            Télécharger la fiche d'inscription
-          </Fiche>
-        </FicheSection>
       </React.Fragment>
     )
   }
@@ -335,11 +314,6 @@ export const query = graphql`
           content
         }
       }
-    }
-    ficheInscription: file(
-      name: {eq: "Fiche-inscription"}
-    ) {
-      publicURL
     }
   }
 `
