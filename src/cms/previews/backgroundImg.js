@@ -9,7 +9,7 @@ export default class BackgroundImg extends React.Component {
       return (
         <StyledImg
           src={this.props.img}
-          alt=''
+          alt=""
         />
       )
     }

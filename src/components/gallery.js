@@ -1,4 +1,5 @@
 import React from "react";
+import { graphql } from "gatsby";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 import Img from "gatsby-image";
@@ -81,7 +82,7 @@ class Gallery extends React.Component {
         <GalleryWrapper>
           {this.props.images.map((image, index) => (
             <Thumbnail
-              key={image.url.thumbnail.sizes.src}
+              key={image.url.thumbnail.fluid.src}
             >
               <ThumbWrapper>
                 <ThumbCtrl
@@ -90,7 +91,7 @@ class Gallery extends React.Component {
                   title={image.title}
                 >
                   <ThumbImg
-                    sizes={image.url.thumbnail.sizes}
+                    fluid={image.url.thumbnail.fluid}
                     alt={image.title}
                   />
                 </ThumbCtrl>
@@ -118,13 +119,13 @@ export const markdownFrontmatterFragment = graphql`
         title
         url {
           full: childImageSharp {
-            sizes(maxWidth: 1920) {
-              ...GatsbyImageSharpSizes_withWebp
+            fluid(maxWidth: 1920) {
+              ...GatsbyImageSharpFluid_withWebp
             }
           }
           thumbnail: childImageSharp {
-            sizes(maxHeight: 200, maxWidth: 200) {
-              ...GatsbyImageSharpSizes_withWebp
+            fluid(maxHeight: 200, maxWidth: 200) {
+              ...GatsbyImageSharpFluid_withWebp
             }
           }
         }

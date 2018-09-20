@@ -1,13 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { graphql } from "gatsby";
 import Helmet from "react-helmet";
 import styled from "styled-components";
-import Link from "gatsby-link";
-import nl2br from "react-nl2br";
 
 import theme from "../theme";
+import Layout from "../components/layout";
 import SEO from "../components/seo";
-import { PageContainer } from "../components/page/page";
 import PageHeader from "../components/page/pageHeader";
 import Content from "../components/pellicule/content";
 import ControlsTop from "../components/pellicule/controls";
@@ -195,7 +194,7 @@ export default class ExplorerPage extends React.Component {
 
     const image = this.gallery[this.state.galleryIndex];
     share.title = prefix + image.title;
-    share.url = document.location.origin + image.url.full.sizes.src;
+    share.url = document.location.origin + image.url.full.fluid.src;
 
     if (navigator.share) {
       navigator.share(share)
@@ -215,7 +214,7 @@ export default class ExplorerPage extends React.Component {
             })
           }.bind(this), 3000),
         )
-        .catch((error) => console.error('Could not copy text: ', err));
+        .catch((error) => console.error('Could not copy text: ', error));
     }
     else {
       this.setState({
@@ -256,7 +255,7 @@ export default class ExplorerPage extends React.Component {
     }
 
     return(
-      <React.Fragment>
+      <Layout>
         <Helmet>
           <title>{pageTitle}</title>
         </Helmet>
@@ -264,7 +263,7 @@ export default class ExplorerPage extends React.Component {
           title={this.page.title}
           slug={this.page.slug}
           description={this.page.overview}
-          image={this.page.image.full.sizes.src}
+          image={this.page.image.full.fluid.src}
           siteMetadata={this.siteMetadata}
         />
         {this.state.notification ? (
@@ -309,7 +308,7 @@ export default class ExplorerPage extends React.Component {
             />
           </Gallery>
         </Container>
-      </React.Fragment>
+      </Layout>
     )
   }
 }
@@ -337,8 +336,8 @@ export const query = graphql`
         title
         image {
           full: childImageSharp {
-            sizes(maxWidth: 1920) {
-              ...GatsbyImageSharpSizes_withWebp
+            fluid(maxWidth: 1920) {
+              ...GatsbyImageSharpFluid_withWebp
             }
           }
         }
@@ -361,8 +360,8 @@ export const query = graphql`
               title
               url {
                 full: childImageSharp {
-                  sizes(maxWidth: 1920) {
-                    ...GatsbyImageSharpSizes_withWebp
+                  fluid(maxWidth: 1920) {
+                    ...GatsbyImageSharpFluid_withWebp
                   }
                 }
               }
@@ -390,8 +389,8 @@ export const query = graphql`
               title
               url {
                 full: childImageSharp {
-                  sizes(maxWidth: 1920) {
-                    ...GatsbyImageSharpSizes_withWebp
+                  fluid(maxWidth: 1920) {
+                    ...GatsbyImageSharpFluid_withWebp
                   }
                 }
               }

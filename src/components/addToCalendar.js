@@ -1,8 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import theme from "../theme";
-import slugify from "../functions/slugify";
 import Dates from "../functions/dates";
 import Navigation from "./navigation";
 

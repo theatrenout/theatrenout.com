@@ -153,7 +153,7 @@ class SpectacleListe extends React.Component {
 
   getSpectacleByPoster(spectacles, image) {
     const spectacle = spectacles.find(function(spectacle) {
-      return spectacle.poster == image.url;
+      return spectacle.poster === image.url;
     })
     return spectacle;
   }
@@ -209,13 +209,13 @@ class SpectacleListe extends React.Component {
               link="#"
               onClickHandle={onClickPoster}
               aria-controls={'details-' + spectacle.slug.slice(1,-1)}
-              aria-checked={spectacle.slug == activeSpectacle ? 'true' : 'false'}
-              active={spectacle.slug == activeSpectacle}
+              aria-checked={spectacle.slug === activeSpectacle ? 'true' : 'false'}
+              active={spectacle.slug === activeSpectacle}
             />
             <Details
               id={'details-' + spectacle.slug.slice(1,-1)}
-              visible={spectacle.slug == activeSpectacle}
-              aria-hidden={spectacle.slug == activeSpectacle ? 'false' : 'true'}
+              visible={spectacle.slug === activeSpectacle}
+              aria-hidden={spectacle.slug === activeSpectacle ? 'false' : 'true'}
             >
               <DetailsHeader>
                 <Close

@@ -1,14 +1,14 @@
 import React from "react";
+import { graphql } from "gatsby";
 import Helmet from "react-helmet";
 import styled from "styled-components";
 import nl2br from "react-nl2br";
 import remark from "remark";
 import reactRenderer from "remark-react";
-import Link from "gatsby-link";
 
-import theme from "../theme";
+import Layout from "../components/layout";
 import SEO from "../components/seo";
-import { PageContainer, PageTitle, PageSeparator, PageOverview, PageInfo } from "../components/page/page";
+import { PageTitle, PageSeparator, PageOverview, PageInfo } from "../components/page/page";
 import PageHeader from "../components/page/pageHeader";
 import PageNav from "../components/page/pageNav";
 import StyledSection from "../components/styledComponents/styledSection";
@@ -115,8 +115,8 @@ export default class LocationPage extends React.Component {
 
   findImageIndex(gallery, image) {
     let index = -1;
-    for (let i = 0; i < gallery.length && index == -1; i++){
-      if (gallery[i].url.full.sizes.src === image.url.full.sizes.src) {
+    for (let i = 0; i < gallery.length && index === -1; i++){
+      if (gallery[i].url.full.fluid.src === image.url.full.fluid.src) {
         index = i;
       }
     }
@@ -163,7 +163,7 @@ export default class LocationPage extends React.Component {
     this.activeGallery = gallery.slice(8);
     const section = this.page.sections.find(this.findSectionBySlug);
     const slug = slugify(image.title);
-    history.pushState(
+    window.history.pushState(
       { url: this.page.slug + '#' + gallery + '&photo=' + slug},
       this.siteMetadata.title + ' ' + this.siteMetadata.titleSeparator + this.page.title + ' - Galerie de ' + section.title,
       '#' + gallery + '&photo=' + slug
@@ -190,7 +190,7 @@ export default class LocationPage extends React.Component {
       image = this.props.data.panoramaSalle.publicURL;
       title = 'la salle de spectacle';
     }
-    history.pushState(
+    window.history.pushState(
       { url: this.page.slug + '#panorama-' + type},
       this.siteMetadata.title + ' ' + this.siteMetadata.titleSeparator + this.page.title + ' - Vue à 360° de ' + title,
       '#panorama-' + type,
@@ -230,7 +230,7 @@ export default class LocationPage extends React.Component {
   }
 
   closePellicule() {
-    history.back();
+    window.history.back();
     this.setState({ pellicule: null });
   }
 
@@ -290,7 +290,7 @@ export default class LocationPage extends React.Component {
     const gallery = section.gallery.content.frontmatter.images;
     const image = gallery[imageIndex];
     const slug = slugify(image.title);
-    history.replaceState(
+    window.history.replaceState(
       { url: document.location.pathname + '#galerie=' + this.activeGallery + '&photo=' + slug },
       this.siteMetadata.title + this.siteMetadata.titleSeparator + this.page.title + 'Galerie de ' + section.title,
       document.location.pathname + '#galerie=' + this.activeGallery + '&photo=' + slug
@@ -310,7 +310,7 @@ export default class LocationPage extends React.Component {
     const navLinks = this.getNavLinks();
 
     return(
-      <React.Fragment>
+      <Layout>
         <Helmet>
           <title>{pageTitle}</title>
         </Helmet>
@@ -318,7 +318,7 @@ export default class LocationPage extends React.Component {
           title={this.page.title}
           slug={this.page.slug}
           description={this.page.overview}
-          image={this.page.image.full.sizes.src}
+          image={this.page.image.full.fluid.src}
           siteMetadata={this.siteMetadata}
         />
         {hasPellicule ? (
@@ -383,7 +383,7 @@ export default class LocationPage extends React.Component {
             : null }
           </React.Fragment>
         ))}
-      </React.Fragment>
+      </Layout>
     )
   }
 }
@@ -411,8 +411,8 @@ export const query = graphql`
         title
         image {
           full: childImageSharp {
-            sizes(maxWidth: 1920) {
-              ...GatsbyImageSharpSizes_withWebp
+            fluid(maxWidth: 1920) {
+              ...GatsbyImageSharpFluid_withWebp
             }
           }
         }

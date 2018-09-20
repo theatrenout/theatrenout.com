@@ -1,11 +1,13 @@
 import React from "react";
+import { graphql } from "gatsby";
 import Helmet from "react-helmet";
 import styled from "styled-components";
 import nl2br from "react-nl2br";
 
 import theme from "../theme";
+import Layout from "../components/layout";
 import SEO from "../components/seo";
-import { PageContainer, PageTitle, PageSeparator, PageOverview, PageInfo } from "../components/page/page";
+import { PageTitle, PageSeparator, PageOverview, PageInfo } from "../components/page/page";
 import PageHeader from "../components/page/pageHeader";
 import PageNav from "../components/page/pageNav";
 import StyledSection from "../components/styledComponents/styledSection";
@@ -59,13 +61,13 @@ const SectionDiv = styled.div`
   }
 `
 
-const VFlexDiv = SectionDiv.extend`
+const VFlexDiv = styled(SectionDiv)`
   display: flex;
   flex-direction: column;
   align-items: center;
 `
 
-const HFlexDiv = VFlexDiv.extend`
+const HFlexDiv = styled(VFlexDiv)`
   flex-direction: row;
   justify-content: space-evenly;
   align-items: flex-start;
@@ -158,7 +160,7 @@ export default class InformationsPage extends React.Component {
     const navLinks = this.getNavLinks();
 
     return(
-      <React.Fragment>
+      <Layout>
         <Helmet>
           <title>{pageTitle}</title>
         </Helmet>
@@ -300,7 +302,7 @@ export default class InformationsPage extends React.Component {
             </Contact>
           </SectionDiv>
         </StyledSection>
-      </React.Fragment>
+      </Layout>
     )
   }
 }
@@ -336,8 +338,8 @@ export const query = graphql`
     }
     image: file(name: {eq: "exterieur-1"}) {
       full: childImageSharp {
-        sizes(maxWidth: 1920) {
-          ...GatsbyImageSharpSizes_withWebp
+        fluid(maxWidth: 1920) {
+          ...GatsbyImageSharpFluid_withWebp
         }
       }
     }

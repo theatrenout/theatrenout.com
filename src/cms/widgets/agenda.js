@@ -1,5 +1,4 @@
 import React from "react";
-import styled from "styled-components";
 import { List } from "immutable";
 import DayPicker, { DateUtils } from "react-day-picker";
 import "react-day-picker/lib/style.css";

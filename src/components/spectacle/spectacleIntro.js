@@ -1,8 +1,6 @@
 import React from "react";
-import styled from "styled-components";
 import PropTypes from "prop-types";
 
-import theme from "../../theme";
 import { PageTitle, PageSubtitle, PageSeparator, PageOverview, PageInfo } from "../page/page";
 import SpectacleNav from "./spectacleNav";
 import Shows from "../../functions/shows";

@@ -31,7 +31,7 @@ const NavItem = styled.li`
 `
 
 const NavLink = styled(Navigation).attrs({
-  type: 'link',
+  type: 'anchor',
 })`
   display: inline-block;
   box-sizing: border-box;
@@ -53,7 +53,7 @@ class PageNav extends React.Component {
                 key={link.url}
               >
                 <NavLink
-                  to={link.url}
+                  href={link.url}
                   role="menuitem"
                 >
                   {link.text}

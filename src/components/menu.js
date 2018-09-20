@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
-import Link from "gatsby-link";
+import { Link } from "gatsby";
 
 import theme from "../theme";
 import Icon from "./styledComponents/icon";
@@ -93,11 +93,11 @@ const NavLink = styled(Link).attrs({
   }
 `;
 
-const SocialList = NavList.extend`
+const SocialList = styled(NavList)`
   flex-direction: row;
 `
 
-const SocialItem = NavItem.extend`
+const SocialItem = styled(NavItem)`
   width: auto;
   flex: 1 0 auto;
   background-color: ${theme.color.lighter};
@@ -105,7 +105,7 @@ const SocialItem = NavItem.extend`
 
 const NavA = NavLink.withComponent('a')
 
-const Anchor = NavA.extend.attrs({
+const Anchor = styled(NavA).attrs({
   target: '_blank',
   rel: 'noopener noreferrer',
 })`
@@ -151,13 +151,13 @@ class Menu extends React.Component {
               <NavLink to="/explorer" onClick={this.props.onCloseMenu}>Explorer</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink to="/formation" onClick={this.props.onCloseMenu}>Formation</NavLink>
-            </NavItem>
-            <NavItem>
               <NavLink to="/location" onClick={this.props.onCloseMenu}>Location</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink to="/la-compagnie" onClick={this.props.onCloseMenu}>La compagnie</NavLink>
+              <NavLink to="/notre-histoire" onClick={this.props.onCloseMenu}>Notre histoire</NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink to="/nous-rejoindre" onClick={this.props.onCloseMenu}>Nous rejoindre</NavLink>
             </NavItem>
             <NavItem>
               <NavLink to="/informations-pratiques" onClick={this.props.onCloseMenu}>Informations pratiques</NavLink>

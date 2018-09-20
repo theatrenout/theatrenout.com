@@ -144,15 +144,15 @@ class Thumbnails extends React.Component {
     })
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     var activeIndex = nextProps.activeIndex;
-    if (activeIndex != this.props.activeIndex) {
-      if ( this.state.activeIndex == this.props.thumbs.length - 1 &&
-        nextProps.activeIndex == 0 && nextProps.direction === 'next') {
+    if (activeIndex !== this.props.activeIndex) {
+      if ( this.state.activeIndex === this.props.thumbs.length - 1 &&
+        nextProps.activeIndex === 0 && nextProps.direction === 'next') {
           activeIndex = this.props.thumbs.length;
       }
-      else if ( this.state.activeIndex == 0 &&
-        activeIndex == this.props.thumbs.length - 1 && nextProps.direction === 'prev') {
+      else if ( this.state.activeIndex === 0 &&
+        activeIndex === this.props.thumbs.length - 1 && nextProps.direction === 'prev') {
           activeIndex = -1;
       }
       this.setState({
@@ -164,9 +164,9 @@ class Thumbnails extends React.Component {
 
   componentDidUpdate(prevProps, prevState) {
     const { activeIndex } = prevProps;
-    if (activeIndex != this.props.activeIndex &&
-      (this.state.activeIndex == this.props.thumbs.length ||
-      this.state.activeIndex == -1)) {
+    if (activeIndex !== this.props.activeIndex &&
+      (this.state.activeIndex === this.props.thumbs.length ||
+      this.state.activeIndex === -1)) {
         setTimeout(function() {
           this.setState({ activeIndex: this.props.activeIndex, duration: ''});
           setTimeout(function() {
@@ -195,9 +195,9 @@ class Thumbnails extends React.Component {
             number={thumb.number}
             img={thumb.poster}
             alt={thumb.title}
-            link={thumb.number == activeIndex ? '' : '#'}
+            link={thumb.number === activeIndex ? '' : '#'}
             onClickHandle={goToPrev}
-            active={thumb.number == activeIndex}
+            active={thumb.number === activeIndex}
             duration={this.state.duration}
             aria-hidden={(thumb.number <= activeIndex + 1) && (thumb.number >= activeIndex - 1) ? 'false' : 'true'}
           />
@@ -208,9 +208,9 @@ class Thumbnails extends React.Component {
             number={index}
             img={thumb.poster}
             alt={thumb.title}
-            link={index == activeIndex ? '' : '#'}
+            link={index === activeIndex ? '' : '#'}
             onClickHandle={index > activeIndex ? goToNext : goToPrev}
-            active={index == activeIndex}
+            active={index === activeIndex}
             duration={this.state.duration}
             aria-hidden={(index <= activeIndex + 1) && (index >= activeIndex - 1) ? 'false' : 'true'}
           />
@@ -221,9 +221,9 @@ class Thumbnails extends React.Component {
             number={thumb.number}
             img={thumb.poster}
             alt={thumb.title}
-            link={thumb.number == activeIndex ? '' : '#'}
+            link={thumb.number === activeIndex ? '' : '#'}
             onClickHandle={goToNext}
-            active={thumb.number == activeIndex}
+            active={thumb.number === activeIndex}
             duration={this.state.duration}
             aria-hidden={(thumb.number <= activeIndex + 1) && (thumb.number >= activeIndex - 1) ? 'false' : 'true'}
           />

@@ -60,8 +60,8 @@ class StartEnd extends React.Component {
     let monthTo = '';
     let dayTo = '';
 
-    if (dateFrom.getTime() != dateTo.getTime()) {
-      if (dateFrom.getYear() != dateTo.getYear()) {
+    if (dateFrom.getTime() !== dateTo.getTime()) {
+      if (dateFrom.getYear() !== dateTo.getYear()) {
         yearFrom = dateFrom.getFullYear().toString();
       }
       yearTo = dateTo.getFullYear().toString();
@@ -126,19 +126,19 @@ class DatesList extends React.Component {
     let weekString = '';
     week.forEach(function (day, index, array) {
       if (index > 0) {
-        if (index == array.length - 1) {
+        if (index === array.length - 1) {
           weekString += ' et ';
         }
         else {
           weekString += ', ';
         }
       }
-      if (day.from == day.to) {
+      if (day.from === day.to) {
         weekString += WEEKDAYS_LONG[day.from];
       }
-      else if (day.from == day.to) {
+      else if (day.from === day.to) {
         weekString += WEEKDAYS_LONG[day.from];
-        if (index == array.length - 1) {
+        if (index === array.length - 1) {
           weekString += ' et ';
         }
         else {
@@ -155,11 +155,11 @@ class DatesList extends React.Component {
   }
 
   getDaysString(dates) {
-      if (dates == null || dates.length == 0) {
+      if (dates === null || dates.length === 0) {
         return '';
       }
       const daysString = Shows.getDatesString(dates);
-      if (dates.length == 1) {
+      if (dates.length === 1) {
         return 'Le ' + daysString;
       }
       else {
@@ -170,7 +170,7 @@ class DatesList extends React.Component {
   render() {
     const weekString = this.getWeekString(this.props.regularWeek);
     const daysString = this.getDaysString(this.props.datesToAdd);
-    const hasDates = weekString.length > 0 || daysString.length > 0 || previewString.length > 0;
+    const hasDates = weekString.length > 0 || daysString.length > 0;
 
     if (hasDates) {
       return (
@@ -257,11 +257,11 @@ class DatesTimes extends React.Component {
   getPreviewString(date) {
     const now = new Date();
     const preview = new Date(date);
-    if (date == null || date.length == 0 || preview < now) {
+    if (date === null || date.length === 0 || preview < now) {
       return '';
     }
     let minutes = preview.getMinutes() > 0 ? preview.getMinutes().toString() : '';
-    if (minutes.length == 1) {
+    if (minutes.length === 1) {
       minutes = '0' + minutes;
     }
     const previewString =  'Avant-première le ' + Shows.getDatesString([preview])
@@ -271,11 +271,11 @@ class DatesTimes extends React.Component {
   }
 
   getBreakString(dates) {
-    if (dates == null || dates.length == 0) {
+    if (dates === null || dates.length === 0) {
       return '';
     }
     const breakString = Shows.getDatesString(dates);
-    if (dates.length == 1)
+    if (dates.length === 1)
     {
       return 'Relâche le ' + breakString;
     }
@@ -352,7 +352,7 @@ class SpectacleShows extends React.Component {
       );
     }
     else if (hasUpcomingShows || hasUpcomingPreview) {
-      const hasOneShow = hasUpcomingShows && (showsData.dateFrom.getTime() == showsData.dateTo.getTime());
+      const hasOneShow = hasUpcomingShows && (showsData.dateFrom.getTime() === showsData.dateTo.getTime());
       return (
         <ShowsContainer
           className={this.props.className}

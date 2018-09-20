@@ -9,7 +9,7 @@ const Shows = {
   isCustomDate: function(dateString) {
     if (dateString && dateString.length > 0) {
       const splitDate = dateString.split('-');
-      if (splitDate.length == 2) {
+      if (splitDate.length === 2) {
         return true;
       }
     }
@@ -129,11 +129,11 @@ const Shows = {
 
     const weekStats = [];
     weekDays.forEach(function(weekDay) {
-      if (weekDay.number != 0) {
+      if (weekDay.number !== 0) {
         const statIndex = weekStats.findIndex(function(stat) {
-          return stat.count == weekDay.number;
+          return stat.count === weekDay.number;
         })
-        if (statIndex != -1) {
+        if (statIndex !== -1) {
           weekStats[statIndex].days.push(weekDay.day);
         }
         else {
@@ -148,7 +148,7 @@ const Shows = {
 
     let baseDays = [];
     // if there is only one of each, return empty array
-    if (maxCount == 1) {
+    if (maxCount === 1) {
       return [];
     }
     else {
@@ -157,31 +157,31 @@ const Shows = {
       });
       const baseCount = weekStats[0].count;
       // if there is only one of each, return empty array
-      if (baseCount == 1) {
+      if (baseCount === 1) {
         return [];
       }
       baseDays = weekStats[0].days;
-      if (baseCount != maxCount) {
+      if (baseCount !== maxCount) {
         for (let i = baseCount+1; i <= maxCount; i++) {
           const statIndex = weekStats.findIndex(function(stat) {
-            return stat.count == i ;
+            return stat.count === i ;
           })
-          if (statIndex != -1) {
+          if (statIndex !== -1) {
             baseDays = baseDays.concat(weekStats[statIndex].days)
           }
         }
       }
       const statIndex = weekStats.findIndex(function(stat) {
-        return stat.count == baseCount - 1;
+        return stat.count === baseCount - 1;
       })
-      if (statIndex != -1) {
+      if (statIndex !== -1) {
         baseDays = baseDays.concat(weekStats[statIndex].days)
       }
       if (baseCount > 4) {
         const statIndex = weekStats.findIndex(function(stat) {
-          return stat.count == baseCount - 2;
+          return stat.count === baseCount - 2;
         })
-        if (statIndex != -1) {
+        if (statIndex !== -1) {
           baseDays = baseDays.concat(weekStats[statIndex].days)
         }
       }
@@ -210,10 +210,10 @@ const Shows = {
     for (let i = 0; (dateFrom.getTime() + i * 86400000) <= dateTo.getTime(); i++) {
       const date = new Date(dateFrom.getFullYear(), dateFrom.getMonth(), dateFrom.getDate() + i, dateFrom.getHours(), dateFrom.getMinutes());
       const foundInBase = baseDates.find(function(element) {
-        return element.getTime() == date.getTime();
+        return element.getTime() === date.getTime();
       });
       const foundInDates = dates.find(function(element) {
-        return element.getTime() == date.getTime();
+        return element.getTime() === date.getTime();
       });
       if (foundInBase && !foundInDates) {
         datesToRemove.push(date);
@@ -226,7 +226,7 @@ const Shows = {
   },
 
   getWeekData: function(weekDays) {
-    if (weekDays.length == 1) {
+    if (weekDays.length === 1) {
       return [{ from: weekDays[0], to: weekDays[0] }];
     }
     else {
@@ -236,19 +236,19 @@ const Shows = {
         if (daysLeft.includes(weekDays[i])) {
           const range = [weekDays[i]];
           daysLeft.splice(i,1);
-          if (weekDays[i] == 0) {
-            for (let j = 0; (j < weekDays.length) && (weekDays[weekDays.length - j] == 6 - j); j++) {
+          if (weekDays[i] === 0) {
+            for (let j = 0; (j < weekDays.length) && (weekDays[weekDays.length - j] === 6 - j); j++) {
               range.push(weekDays[weekDays.length - j]);
               const foundDay = daysLeft.findIndex(function(day) {
-                return day == weekDays[weekDays.length - j];
+                return day === weekDays[weekDays.length - j];
               });
               daysLeft.splice(foundDay,1);
             }
           }
-          for (let j = 1; (j < weekDays.length - i) && (weekDays[i + j] == weekDays[i] + j); j++) {
+          for (let j = 1; (j < weekDays.length - i) && (weekDays[i + j] === weekDays[i] + j); j++) {
             range.push(weekDays[i + j]);
             const foundDay = daysLeft.findIndex(function(day) {
-              return day == weekDays[i + j];
+              return day === weekDays[i + j];
             });
             daysLeft.splice(foundDay,1);
           }
@@ -263,7 +263,6 @@ const Shows = {
   },
 
   getShowsData: function(shows) {
-    let showsString = '';
     let allDatesToRemove = [];
     const datesList = [];
     const dateFrom = this.getFirstShow(shows);
@@ -275,7 +274,7 @@ const Shows = {
         return a>b ? 1 : a<b ? -1 : 0;
       });
 
-      if (dates.length == 1) {
+      if (dates.length === 1) {
         datesList.push({
           time: showTime.time,
           dates: dates[0],
@@ -318,10 +317,10 @@ const Shows = {
     let datesString = ''
     dates.forEach(function(date, index, array) {
       const dateOptions = { day: 'numeric' };
-      if (index == array.length - 1) {
+      if (index === array.length - 1) {
         dateOptions.month = 'long';
         dateOptions.year = 'numeric';
-        if (index != 0) {
+        if (index !== 0) {
           datesString += ' et '
         }
       }
@@ -329,11 +328,11 @@ const Shows = {
         if (index > 0) {
           datesString += ', '
         }
-        if (date.getFullYear() != array[index+1].getFullYear()) {
+        if (date.getFullYear() !== array[index+1].getFullYear()) {
           dateOptions.year = 'numeric';
           dateOptions.month = 'long';
         }
-        else if (date.getMonth() != array[index+1].getMonth()) {
+        else if (date.getMonth() !== array[index+1].getMonth()) {
           dateOptions.month = 'long';
         }
       }
@@ -349,11 +348,11 @@ const Shows = {
         && this.hasUpcomingShows(spectacle.shows.dates)) {
           if (this.hasUpcomingPreview(spectacle.shows.preview)) {
             const previewDate = new Date(spectacle.shows.preview)
-            if (previewDate.getDate() == dateToMatch.getDate()
-              && previewDate.getMonth() == dateToMatch.getMonth()
-              && previewDate.getFullYear() == dateToMatch.getFullYear()) {
+            if (previewDate.getDate() === dateToMatch.getDate()
+              && previewDate.getMonth() === dateToMatch.getMonth()
+              && previewDate.getFullYear() === dateToMatch.getFullYear()) {
                 let minutes = previewDate.getMinutes().toString();
-                if (minutes.length == 1) {
+                if (minutes.length === 1) {
                   minutes = '0' + minutes;
                 }
                 shows.push({
@@ -365,9 +364,9 @@ const Shows = {
           spectacle.shows.dates.forEach(function(date) {
             const days = this.getDatesFromStrings(date);
             days.forEach(function(day) {
-              if (day.getDate() == dateToMatch.getDate()
-                && day.getMonth() == dateToMatch.getMonth()
-                && day.getFullYear() == dateToMatch.getFullYear()) {
+              if (day.getDate() === dateToMatch.getDate()
+                && day.getMonth() === dateToMatch.getMonth()
+                && day.getFullYear() === dateToMatch.getFullYear()) {
                   shows.push({
                     time: date.time,
                     spectacle: spectacle,

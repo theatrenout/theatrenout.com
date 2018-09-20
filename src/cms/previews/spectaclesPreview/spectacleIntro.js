@@ -35,11 +35,6 @@ const TagsItem = props =>
     {props.children}
   </li>
 
-const DateDiv = props =>
-  <div className="intro-datediv">
-    {props.children}
-  </div>
-
 const Overview = props =>
   <p className="intro-overview">
     {props.children}
@@ -76,7 +71,7 @@ const Overview = props =>
         let hours = parseInt(durationArray[0]).toString();
         let minutes = parseInt(durationArray[1]).toString();
         if (hours > 0) {
-          if (hours == 1) {
+          if (hours === 1) {
             durationString = '1 heure';
           }
           else {
@@ -87,7 +82,7 @@ const Overview = props =>
           }
         }
         if (minutes > 0) {
-          if (minutes == 1) {
+          if (minutes === 1) {
             durationString += '1 minute';
           }
           else {

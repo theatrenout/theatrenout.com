@@ -47,7 +47,7 @@ export class DatetimePickerControl extends React.Component {
   }
 }
 
-export class TimePickerPreview extends React.Component {
+export class DatetimePickerPreview extends React.Component {
   render() {
     return (
       <div>

@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
-import Link from "gatsby-link";
 
 import theme from "../../theme";
 import Navigation from "../navigation";
@@ -51,7 +50,7 @@ const NavLink = styled(Navigation).attrs({
   height: 100%;
 `
 
-const NavA = NavLink.extend.attrs({
+const NavA = styled(NavLink).attrs({
   type: 'anchor',
 })`
   color: ${theme.color.important};

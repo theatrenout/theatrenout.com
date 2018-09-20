@@ -50,7 +50,7 @@ class SpectacleHeaderList extends React.Component {
           maxHeight = spectacleHeight;
         }
       }
-      if (maxHeight != 0) {
+      if (maxHeight !== 0) {
         const spectaclesList = ReactDOM.findDOMNode(this.spectaclesList);
         spectaclesList.style.minHeight = maxHeight + 'px';
       }
@@ -67,7 +67,7 @@ class SpectacleHeaderList extends React.Component {
           <IndexSpectacleHeader
             key={spectacle.slug}
             background={spectacle.image}
-            visible={index == activeIndex}
+            visible={index === activeIndex}
             ref={div => this.spectacles[index] = div}
           >
             <SpectacleIntro

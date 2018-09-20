@@ -162,7 +162,7 @@ class SEO extends React.Component {
     const json = {
       "@context" : "http://schema.org",
       "@type" : "CreativeWork",
-      "image" : data.siteMetadata.siteUrl.slice(0,-1) + data.spectacle.poster.full.sizes.src,
+      "image" : data.siteMetadata.siteUrl.slice(0,-1) + data.spectacle.poster.full.fluid.src,
       "name" : data.spectacle.title,
       "description": data.spectacle.overview,
       "url" : data.siteMetadata.siteUrl.slice(0,-1) + data.spectacle.slug,
@@ -172,7 +172,7 @@ class SEO extends React.Component {
       },
       "isFamilyFriendly" : isFamilyFriendly,
       "typicalAgeRange" : typicalAgeRange,
-      "thumbnailUrl" : data.siteMetadata.siteUrl.slice(0,-1) + data.spectacle.image.full.sizes.src,
+      "thumbnailUrl" : data.siteMetadata.siteUrl.slice(0,-1) + data.spectacle.image.full.fluid.src,
     };
 
     if (data.spectacle.trailer) {
@@ -222,7 +222,7 @@ class SEO extends React.Component {
               "@context" : "http://schema.org",
               "@type" : "TheaterEvent",
               "location" : theater,
-              "image" : data.siteMetadata.siteUrl.slice(0,-1) + spectacle.poster.full.sizes.src,
+              "image" : data.siteMetadata.siteUrl.slice(0,-1) + spectacle.poster.full.fluid.src,
               "name" : spectacle.title,
               "description": spectacle.overview,
               "doorTime" : doorTime,

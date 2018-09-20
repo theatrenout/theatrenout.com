@@ -16,7 +16,7 @@ class BackgroundImg extends React.Component {
     if (this.props.img) {
       return (
         <StyledImg
-          sizes={this.props.img.full.sizes}
+          fluid={this.props.img.full.fluid}
           alt=''
           style={{ position: 'absolute' }}
         />

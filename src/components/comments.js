@@ -63,7 +63,7 @@ class Comments extends React.Component {
           maxHeight = commentHeight;
         }
       }
-      if (maxHeight != 0) {
+      if (maxHeight !== 0) {
         const commentsList = ReactDOM.findDOMNode(this.commentsList);
         commentsList.style.height = maxHeight + 'px';
 
@@ -106,7 +106,7 @@ class Comments extends React.Component {
               key={index}
               text={comment.text}
               author={comment.author}
-              visible={index == activeIndex}
+              visible={index === activeIndex}
               ref={comment => this.comments[index] = comment}
             />
           ))}

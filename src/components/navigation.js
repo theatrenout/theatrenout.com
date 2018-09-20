@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
-import Link from "gatsby-link";
+import { Link } from "gatsby";
 
 import theme from "../theme";
 import Icon from "./styledComponents/icon";
@@ -16,6 +16,10 @@ const LinkContainer = styled(Link)`
   border: 1px solid ${theme.color.primary};
   color: ${theme.color.primary};
   background-color: ${theme.color.lighter};
+
+  &:hover {
+    cursor: pointer;
+  }
 
   &:hover, &:active, &:focus {
     color: ${theme.color.lighter};

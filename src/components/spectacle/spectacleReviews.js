@@ -120,7 +120,7 @@ class SpectacleReviews extends React.Component {
           maxHeight = reviewHeight;
         }
       }
-      if (maxHeight != 0) {
+      if (maxHeight !== 0) {
         const reviewsList = ReactDOM.findDOMNode(this.reviewsList);
         reviewsList.style.height = maxHeight + 'px';
       }
@@ -138,12 +138,12 @@ class SpectacleReviews extends React.Component {
   }
 
   goToNext() {
-    const newIndex = this.state.activeIndex == this.props.reviews.length - 1 ? 0 : this.state.activeIndex + 1;
+    const newIndex = this.state.activeIndex === this.props.reviews.length - 1 ? 0 : this.state.activeIndex + 1;
     this.setState({ activeIndex: newIndex });
   }
 
   goToPrev() {
-    const newIndex = this.state.activeIndex == 0 ? this.props.reviews.length - 1 : this.state.activeIndex - 1;
+    const newIndex = this.state.activeIndex === 0 ? this.props.reviews.length - 1 : this.state.activeIndex - 1;
     this.setState({ activeIndex: newIndex });
   }
 
@@ -184,9 +184,9 @@ class SpectacleReviews extends React.Component {
           {this.props.reviews.map((review, index) => (
             <Review
               key={index}
-              visible={index == activeIndex}
+              visible={index === activeIndex}
               ref={blockquote => this.reviews[index] = blockquote}
-              aria-hidden={index == activeIndex ? 'false' : 'true'}
+              aria-hidden={index === activeIndex ? 'false' : 'true'}
             >
               <Text>{remark().use(reactRenderer).processSync(review.text).contents}</Text>
               <Author>{review.author}</Author>

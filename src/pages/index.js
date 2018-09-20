@@ -1,6 +1,8 @@
 import React from "react";
+import { graphql } from "gatsby";
 import Helmet from "react-helmet";
 
+import Layout from "../components/layout";
 import SEO from "../components/seo";
 import Shows from "../functions/shows";
 import SpectacleHeaderList from "../components/spectacle/spectacleHeaderList";
@@ -78,7 +80,7 @@ export default class IndexPage extends React.Component {
         video: video
       }
     });
-    history.pushState(
+    window.history.pushState(
       { url: location + '#bande-annonce'},
       this.siteMetadata.title + ' ' + this.siteMetadata.titleSeparator + ' Bande-annonce de ' + spectacle,
       location + '#bande-annonce'
@@ -87,14 +89,14 @@ export default class IndexPage extends React.Component {
 
   closePellicule() {
     this.setState({ pellicule: null });
-    history.back();
+    window.history.back();
   }
 
   render() {
     const hasPellicule = this.state.pellicule != null;
 
     return(
-      <React.Fragment>
+      <Layout>
         <Helmet>
           <title>{this.siteMetadata.title}</title>
         </Helmet>
@@ -127,7 +129,7 @@ export default class IndexPage extends React.Component {
           activeIndex={this.state.activeIndex}
           onClickVideo={this.onClickVideo}
         />
-      </React.Fragment>
+      </Layout>
     )
   }
 }
@@ -191,15 +193,15 @@ export const query = graphql`
             }
             poster {
               full: childImageSharp {
-                sizes(maxHeight: 400, maxWidth: 283) {
-                  ...GatsbyImageSharpSizes_withWebp
+                fluid(maxHeight: 400, maxWidth: 283) {
+                  ...GatsbyImageSharpFluid_withWebp
                 }
               }
             }
             image {
               full: childImageSharp {
-                sizes(maxWidth: 1920) {
-                  ...GatsbyImageSharpSizes_withWebp
+                fluid(maxWidth: 1920) {
+                  ...GatsbyImageSharpFluid_withWebp
                 }
               }
             }

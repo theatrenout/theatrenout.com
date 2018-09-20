@@ -3,9 +3,6 @@ import styled from "styled-components";
 
 import YoutubeVideo from "../../components/pellicule/youtubeVideo";
 
-const YoutubeContainer = styled.div`
-  display:flex;
-`
 
 const YoutubeThumbContainer = styled.div`
   flex: 0 0 auto;
@@ -77,7 +74,7 @@ export class YoutubeControl extends React.Component {
     let hasError = false;
     let errorMessage = '';
     if (this.props.value) {
-      if (this.isValid() == true) {
+      if (this.isValid() === true) {
         isValid = true;
       }
       else {

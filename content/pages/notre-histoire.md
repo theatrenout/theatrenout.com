@@ -1,12 +1,12 @@
 ---
 layout: page
-title: La compagnie
+title: Notre histoire
 image: ../images/accueil-6.jpg
 overview: |-
   Le Théâtre Nout, c'est avant tout la compagnie qui le gère.
   Vous découvrirez ici ses origines, ses membres et ses spectacles.
 sections:
-  - title: Une belle histoire
+  - title: La création
     content: >-
       Le **Théâtre Nout** a été créé grâce à la passion, la force et détermination d'une personne : **Hazem El Awadly**.
 
@@ -22,7 +22,7 @@ sections:
 
 
       Le **Théâtre Nout** voit alors le jour à l'Île-Saint-Denis en juin 2000. Depuis plus de 15 ans maintenant, ce théâtre continue à grandir, à évoluer, à produire des pièces, et à accueillir des spectateurs toujours plus nombreux.
-  - title: Une troupe
+  - title: La troupe
     gallery: ../galleries/la-compagnie-la-troupe.md
     content: >-
       La troupe du Théâtre Nout est bien entendue composée des nombreux comédiens qui vont et qui viennent pour jouer dans les différents spectacles de la troupe. Elle est également formée d'une équipe permanente :

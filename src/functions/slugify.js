@@ -11,6 +11,8 @@ export default function slugify(text)
         .trim()                         // Remove whitespace from both sides of a string
         .replace(/\s+/g, '-')           // Replace spaces with -
         .replace(/&/g, '-y-')           // Replace & with 'and'
-        .replace(/[^\w\-]+/g, '')       // Remove all non-word chars
-        .replace(/\-\-+/g, '-');        // Replace multiple - with single -
+        .replace(/l\'/g, '')            // Remove l'
+        .replace(/d\'/g, '')            // Remove d'
+        .replace(/[^\w-]+/g, '')        // Remove all non-word chars
+        .replace(/--+/g, '-');          // Replace multiple - with single -
 }

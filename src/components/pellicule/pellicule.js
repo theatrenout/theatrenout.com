@@ -120,7 +120,7 @@ class Pellicule extends React.Component {
     const prefix = this.props.siteMetadata.title + this.props.siteMetadata.titleSeparator;
     if (this.props.content.type === 'image') {
       share.title = prefix + 'Poster de ' + this.props.content.title;
-      share.url = document.location.origin + this.props.content.image.full.sizes.src;
+      share.url = document.location.origin + this.props.content.image.full.fluid.src;
     }
     else if (this.props.content.type === 'video') {
       share.title = prefix + 'Bande-annonce de ' + this.props.content.title;
@@ -129,7 +129,7 @@ class Pellicule extends React.Component {
     else if (this.props.content.type === 'gallery') {
       const image = this.props.content.gallery[this.props.activeIndex];
       share.title = prefix + image.title;
-      share.url = document.location.origin + image.url.full.sizes.src;
+      share.url = document.location.origin + image.url.full.fluid.src;
     }
     if (navigator.share) {
       navigator.share(share)
@@ -149,7 +149,7 @@ class Pellicule extends React.Component {
             })
           }.bind(this), 3000),
         )
-        .catch((error) => console.error('Could not copy text: ', err));
+        .catch((error) => console.error('Could not copy text: ', error));
     }
     else {
       this.setState({
@@ -174,21 +174,21 @@ class Pellicule extends React.Component {
         aria-live="polite"
       >
         {this.state.share ?
-            this.props.content.type == 'image' ? (
+            this.props.content.type === 'image' ? (
               <SharePopup
                 onClickClose={this.closeShare}
                 text="Lien pour partager cette affiche :"
                 url={this.state.share.url}
               />
             )
-            : this.props.content.type == 'video' ? (
+            : this.props.content.type === 'video' ? (
               <SharePopup
                 onClickClose={this.closeShare}
                 text="Lien pour partager cette bande-annonce :"
                 url={this.state.share.url}
               />
             )
-            : this.props.content.type == 'gallery' ? (
+            : this.props.content.type === 'gallery' ? (
               <SharePopup
                 onClickClose={this.closeShare}
                 text="Lien pour partager cette photographie :"

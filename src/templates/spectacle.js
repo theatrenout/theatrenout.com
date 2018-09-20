@@ -1,8 +1,10 @@
 import React from "react";
+import { graphql } from "gatsby";
 import Helmet from "react-helmet";
 import remark from "remark";
 import reactRenderer from "remark-react";
 
+import Layout from "../components/layout";
 import SEO from "../components/seo";
 import { PageContainer } from "../components/page/page";
 import PageHeader from "../components/page/pageHeader";
@@ -76,8 +78,8 @@ export default class SpectacleTemplate extends React.Component {
 
   findImageIndex(gallery, image) {
     let index = -1;
-    for (let i = 0; i < gallery.length && index == -1; i++){
-      if (gallery[i].url.full.sizes.src === image.url.full.sizes.src) {
+    for (let i = 0; i < gallery.length && index === -1; i++){
+      if (gallery[i].url.full.fluid.src === image.url.full.fluid.src) {
         index = i;
       }
     }
@@ -117,7 +119,7 @@ export default class SpectacleTemplate extends React.Component {
   }
 
   onClickPoster() {
-    history.pushState(
+    window.history.pushState(
       { url: this.spectacle.slug + '#poster' },
       this.siteMetadata.title + ' ' + this.siteMetadata.titleSeparator + ' Affiche de ' + this.spectacle.title,
       '#poster'
@@ -126,7 +128,7 @@ export default class SpectacleTemplate extends React.Component {
   }
 
   onClickVideo() {
-    history.pushState(
+    window.history.pushState(
       { url: this.spectacle.slug + '#bande-annonce' },
       this.siteMetadata.title + ' ' + this.siteMetadata.titleSeparator + ' Bande-annonce de ' + this.spectacle.title,
       '#bande-annonce'
@@ -135,7 +137,7 @@ export default class SpectacleTemplate extends React.Component {
   }
 
   onClickGallery(image) {
-    history.pushState(
+    window.history.pushState(
       { url: this.spectacle.slug + '#galerie' },
       this.siteMetadata.title + ' ' + this.siteMetadata.titleSeparator + ' Galerie de ' + this.spectacle.title,
       '#galerie'
@@ -183,7 +185,7 @@ export default class SpectacleTemplate extends React.Component {
   }
 
   closePellicule() {
-    history.back();
+    window.history.back();
     this.setState({ pellicule: null });
   }
 
@@ -216,7 +218,7 @@ export default class SpectacleTemplate extends React.Component {
   updateHistory(imageIndex) {
     const image = this.gallery[imageIndex];
     const slug = slugify(image.title);
-    history.replaceState(
+    window.history.replaceState(
       { url: document.location.pathname + '#galerie&photo=' + slug },
       this.siteMetadata.title + this.siteMetadata.titleSeparator + 'Galerie de ' + this.spectacle.title,
       document.location.pathname + '#galerie&photo=' + slug
@@ -237,101 +239,103 @@ export default class SpectacleTemplate extends React.Component {
     }
 
     return(
-      <PageContainer>
-        <Helmet>
-          <title>{this.page.title}</title>
-        </Helmet>
-        <SEO
-          title={this.spectacle.title}
-          slug={this.spectacle.slug}
-          description={this.spectacle.overview}
-          image={this.spectacle.poster.full.sizes.src}
-          siteMetadata={this.siteMetadata}
-          jsonType="play"
-          jsonData={jsonData}
-        />
-        {hasPellicule ? (
-          <Pellicule
-            content={this.state.pellicule}
-            onClose={this.closePellicule}
-            activeIndex={this.state.galleryIndex}
-            goToPrev={this.goToPrev}
-            goToNext={this.goToNext}
-            siteMetadata={this.siteMetadata}
-          />
-        )
-        : null }
-        <PageHeader background={this.spectacle.image}>
-          <SpectaclePoster
-            img={this.spectacle.poster}
-            alt={this.spectacle.title}
-            link="#"
-            onClickHandle={this.onClickPoster}
-            type="ctrl"
-          />
-          <SpectacleIntro
+      <Layout>
+        <PageContainer>
+          <Helmet>
+            <title>{this.page.title}</title>
+          </Helmet>
+          <SEO
             title={this.spectacle.title}
-            subtitle={this.spectacle.subtitle}
-            categories={this.spectacle.categories}
-            duration={this.spectacle.duration}
-            intermission={this.spectacle.intermission}
-            creation={this.spectacle.creation}
-            shows={this.spectacle.shows}
-            notice={this.spectacle.notice}
-            overview={this.spectacle.overview}
-            video={this.spectacle.trailer}
-            onClickVideo={this.onClickVideo}
-            onClickGallery={this.onClickGallery}
-            hasGallery={hasGallery}
-            url={hasMore ? '#en-savoir-plus' : ''}
+            slug={this.spectacle.slug}
+            description={this.spectacle.overview}
+            image={this.spectacle.poster.full.fluid.src}
+            siteMetadata={this.siteMetadata}
+            jsonType="play"
+            jsonData={jsonData}
           />
-          <Comments comments={this.spectacle.comments} />
-        </PageHeader>
-        {hasGallery ? (
-          <Gallery
-            id="galerie"
-            images={this.gallery}
-            onClickHandle={this.onClickGallery}
-          />
-        )
-        : null }
-        {hasCast ? (
-          <StyledSection
-            title="Équipe"
-          >
-            <SpectacleCast
-              members={this.spectacle.cast}
+          {hasPellicule ? (
+            <Pellicule
+              content={this.state.pellicule}
+              onClose={this.closePellicule}
+              activeIndex={this.state.galleryIndex}
+              goToPrev={this.goToPrev}
+              goToNext={this.goToNext}
+              siteMetadata={this.siteMetadata}
             />
-          </StyledSection>
-        )
-        : null }
-        {hasPlay ? (
-          <StyledSection
-            title="À propos de l'œuvre"
-          >
-            <div>{remark().use(reactRenderer).processSync(this.spectacle.play).contents}</div>
-          </StyledSection>
-        )
-        : null }
-        {hasIntent ? (
-          <StyledSection
-            title="Intentions"
-          >
-            <div>{remark().use(reactRenderer).processSync(this.spectacle.intent).contents}</div>
-          </StyledSection>
-        )
-        : null }
-        {hasPress ? (
-          <StyledSection
-            title="Avis de la presse"
-          >
-            <SpectacleReviews
-              reviews={this.spectacle.press}
+          )
+          : null }
+          <PageHeader background={this.spectacle.image}>
+            <SpectaclePoster
+              img={this.spectacle.poster}
+              alt={this.spectacle.title}
+              link="#"
+              onClickHandle={this.onClickPoster}
+              type="ctrl"
             />
-          </StyledSection>
-        )
-        : null }
-      </PageContainer>
+            <SpectacleIntro
+              title={this.spectacle.title}
+              subtitle={this.spectacle.subtitle}
+              categories={this.spectacle.categories}
+              duration={this.spectacle.duration}
+              intermission={this.spectacle.intermission}
+              creation={this.spectacle.creation}
+              shows={this.spectacle.shows}
+              notice={this.spectacle.notice}
+              overview={this.spectacle.overview}
+              video={this.spectacle.trailer}
+              onClickVideo={this.onClickVideo}
+              onClickGallery={this.onClickGallery}
+              hasGallery={hasGallery}
+              url={hasMore ? '#en-savoir-plus' : ''}
+            />
+            <Comments comments={this.spectacle.comments} />
+          </PageHeader>
+          {hasGallery ? (
+            <Gallery
+              id="galerie"
+              images={this.gallery}
+              onClickHandle={this.onClickGallery}
+            />
+          )
+          : null }
+          {hasCast ? (
+            <StyledSection
+              title="Équipe"
+            >
+              <SpectacleCast
+                members={this.spectacle.cast}
+              />
+            </StyledSection>
+          )
+          : null }
+          {hasPlay ? (
+            <StyledSection
+              title="À propos de l'œuvre"
+            >
+              <div>{remark().use(reactRenderer).processSync(this.spectacle.play).contents}</div>
+            </StyledSection>
+          )
+          : null }
+          {hasIntent ? (
+            <StyledSection
+              title="Intentions"
+            >
+              <div>{remark().use(reactRenderer).processSync(this.spectacle.intent).contents}</div>
+            </StyledSection>
+          )
+          : null }
+          {hasPress ? (
+            <StyledSection
+              title="Avis de la presse"
+            >
+              <SpectacleReviews
+                reviews={this.spectacle.press}
+              />
+            </StyledSection>
+          )
+          : null }
+        </PageContainer>
+      </Layout>
     )
   }
 }
@@ -376,15 +380,15 @@ export const query = graphql`
         }
         poster {
           full: childImageSharp {
-            sizes(maxHeight: 1080, maxWidth: 764) {
-              ...GatsbyImageSharpSizes_withWebp
+            fluid(maxHeight: 1080, maxWidth: 764) {
+              ...GatsbyImageSharpFluid_withWebp
             }
           }
         }
         image {
           full: childImageSharp {
-            sizes(maxWidth: 1920) {
-              ...GatsbyImageSharpSizes_withWebp
+            fluid(maxWidth: 1920) {
+              ...GatsbyImageSharpFluid_withWebp
             }
           }
         }

@@ -1,5 +1,4 @@
 import React from "react";
-import styled from "styled-components";
 import Picker from "react-month-picker";
 import "react-month-picker/css/month-picker.css";
 

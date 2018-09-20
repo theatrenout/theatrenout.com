@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
-import Link from "gatsby-link";
+import { Link } from "gatsby";
 import Img from "gatsby-image";
 
 
@@ -20,7 +20,7 @@ const PosterLinkContainer = styled.figure`
   }
 `;
 
-const PosterCtrlContainer = PosterLinkContainer.withComponent('button').extend`
+const PosterCtrlContainer = styled(PosterLinkContainer.withComponent('button'))`
   border: none;
   outline: 0;
   padding: 0;
@@ -69,7 +69,7 @@ class SpectaclePoster extends React.Component {
             {...others}
           >
             <PosterImg
-              sizes={img.full.sizes}
+              fluid={img.full.fluid}
               alt={'Affiche de ' + alt}
             />
         </PosterCtrlContainer>
@@ -87,7 +87,7 @@ class SpectaclePoster extends React.Component {
             title={alt}
           >
             <PosterImg
-              sizes={img.full.sizes}
+              fluid={img.full.fluid}
               alt={'Affiche de ' + alt}
             />
           </StyledLink>
@@ -100,7 +100,7 @@ class SpectaclePoster extends React.Component {
           {...others}
         >
           <PosterImg
-            sizes={img.full.sizes}
+            fluid={img.full.fluid}
             alt={'Affiche de ' + alt}
             title={alt}
           />

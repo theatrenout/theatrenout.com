@@ -118,10 +118,9 @@ class Content extends React.Component {
   }
 
   render() {
-    const theme = this.props.theme;
     const type = this.props.content.type;
 
-    if (type == 'image') {
+    if (type === 'image') {
       const image = this.props.content.image;
       return (
         <ContentContainer
@@ -130,9 +129,9 @@ class Content extends React.Component {
           isFullscreen={this.props.isFullscreen}
         >
           <StyledImage
-            sizes={image.full.sizes}
+            fluid={image.full.fluid}
             alt={image.title}
-            outerWrapperClassName="iowA"
+            className="iowA"
             style={{flex: '1 0 auto'}}
             imgStyle={{objectFit: 'contain'}}
           />
@@ -144,7 +143,7 @@ class Content extends React.Component {
         </ContentContainer>
       );
     }
-    else if (type == 'panorama') {
+    else if (type === 'panorama') {
       const image = this.props.content.image;
       return (
         <ContentContainer
@@ -158,7 +157,7 @@ class Content extends React.Component {
         </ContentContainer>
       );
     }
-    else if (type == 'video') {
+    else if (type === 'video') {
       const video = this.props.content.video;
 
       return (
@@ -174,7 +173,7 @@ class Content extends React.Component {
         </ContentContainer>
       );
     }
-    else if (type == 'gallery') {
+    else if (type === 'gallery') {
       const gallery = this.props.content.gallery;
       const activeIndex = this.props.activeIndex;
       const hasNav = gallery.length > 1;
@@ -198,18 +197,18 @@ class Content extends React.Component {
           {gallery.map((image, index) => (
             <ContentContainer
               key={index}
-              visible={index == activeIndex}
+              visible={index === activeIndex}
               onClick={this.props.onClickHandle}
               onSwipedLeft={this.onSwipedLeft}
               onSwipedRight={this.onSwipedRight}
               isFullscreen={this.props.isFullscreen}
               theme={this.props.theme}
-              aria-hidden={index == activeIndex ? 'false' : 'true'}
+              aria-hidden={index === activeIndex ? 'false' : 'true'}
             >
               <StyledImage
-                sizes={image.url.full.sizes}
+                fluid={image.url.full.fluid}
                 alt={image.title}
-                outerWrapperClassName="iowA"
+                className="iowA"
                 style={{flex: '1 0 auto'}}
                 imgStyle={{objectFit: 'contain'}}
                 aria-describedby={'details-' + index}

@@ -3,7 +3,7 @@ import styled from "styled-components";
 import PropTypes from "prop-types";
 import nl2br from "react-nl2br";
 import Img from "gatsby-image";
-import Link from "gatsby-link";
+import { Link } from "gatsby";
 
 import theme from "../../theme";
 import Quote from "../styledComponents/quote";
@@ -70,7 +70,7 @@ const Detail = styled.p`
   list-style: none;
 `
 
-const Copyright = Detail.extend`
+const Copyright = styled(Detail)`
   font-size: .8rem;
 `
 

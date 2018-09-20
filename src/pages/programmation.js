@@ -1,18 +1,18 @@
 import React from "react";
+import { graphql } from "gatsby";
 import Helmet from "react-helmet";
 import styled from "styled-components";
-import Link from "gatsby-link";
 import nl2br from "react-nl2br";
-import DayPicker, { DateUtils } from "react-day-picker";
+import DayPicker from "react-day-picker";
 import "react-day-picker/lib/style.css";
 
 import theme from "../theme";
+import Layout from "../components/layout";
 import SEO from "../components/seo";
 import Shows from "../functions/shows";
 import { WEEKDAYS_LONG, WEEKDAYS_SHORT, MONTHS_LONG, FIRST_DAY_OF_WEEK } from "../locale/fr_FR";
-import { PageContainer, PageTitle, PageSeparator, PageOverview, PageInfo } from "../components/page/page";
+import { PageTitle, PageSeparator, PageOverview, PageInfo } from "../components/page/page";
 import PageHeader from "../components/page/pageHeader";
-import PageNav from "../components/page/pageNav";
 import StyledSection from "../components/styledComponents/styledSection";
 import Ctrl from "../components/ctrl";
 import SpectaclePoster from "../components/spectacle/spectaclePoster";
@@ -171,7 +171,7 @@ const NavPrev = styled(Ctrl)`
   }
 `;
 
-const NavNext = NavPrev.extend`
+const NavNext = styled(NavPrev)`
   float: right;
 `;
 
@@ -365,7 +365,7 @@ const More = styled(Navigation).attrs({
   box-sizing: border-box;
 `
 
-const Reservation = More.extend.attrs({
+const Reservation = styled(More).attrs({
   type: 'anchor',
 })`
   color: ${theme.color.important};
@@ -376,7 +376,7 @@ const Reservation = More.extend.attrs({
   }
 `
 
-const AddCalendar = More.withComponent(AddToCalendar).extend.attrs({
+const AddCalendar = styled(More.withComponent(AddToCalendar)).attrs({
   type: 'anchor',
 })``
 
@@ -413,8 +413,8 @@ export default class ProgrammationPage extends React.Component {
       <React.Fragment>
         <Day
           aria-controls={'details-' + slug}
-          aria-checked={slug == activeDate ? 'true' : 'false'}
-          active={slug == activeDate}
+          aria-checked={slug === activeDate ? 'true' : 'false'}
+          active={slug === activeDate}
         >
           <DayNumber>{date}</DayNumber>
           <StyledList>
@@ -428,8 +428,8 @@ export default class ProgrammationPage extends React.Component {
         {shows && shows.length > 0 ? (
           <Details
             id={'details-' + slug}
-            visible={slug == activeDate}
-            aria-hidden={slug == activeDate ? 'false' : 'true'}
+            visible={slug === activeDate}
+            aria-hidden={slug === activeDate ? 'false' : 'true'}
           >
             <Close
               onClickHandle={this.onClickClose}
@@ -520,7 +520,7 @@ export default class ProgrammationPage extends React.Component {
     }
 
     const slug = day.getFullYear() + '-' + day.getMonth() + '-' + day.getDate();
-    if (slug == this.state.activeDate) {
+    if (slug === this.state.activeDate) {
       this.setState({
         activeDate: null,
       })
@@ -546,7 +546,6 @@ export default class ProgrammationPage extends React.Component {
 
   render() {
     const pageTitle = this.siteMetadata.title + this.siteMetadata.titleSeparator + this.page.title;
-    const pageUrl = this.siteMetadata.siteUrl.slice(0,-1) + this.page.slug;
     const dateFrom = new Date();
     const dateTo = new Date(dateFrom.getFullYear() + 1, dateFrom.getMonth(), dateFrom.getDate());
     const jsonData = {
@@ -555,7 +554,7 @@ export default class ProgrammationPage extends React.Component {
     }
 
     return(
-      <React.Fragment>
+      <Layout>
         <Helmet>
           <title>{pageTitle}</title>
         </Helmet>
@@ -563,7 +562,7 @@ export default class ProgrammationPage extends React.Component {
           title={this.page.title}
           slug={this.page.slug}
           description={this.page.overview}
-          image={this.page.image.full.sizes.src}
+          image={this.page.image.full.fluid.src}
           siteMetadata={this.siteMetadata}
           jsonType="events"
           jsonData={jsonData}
@@ -660,7 +659,7 @@ export default class ProgrammationPage extends React.Component {
             ))}
           </StyledList>
         </StyledSection>
-      </React.Fragment>
+      </Layout>
     )
   }
 }
@@ -705,8 +704,8 @@ export const query = graphql`
         title
         image {
           full: childImageSharp {
-            sizes(maxWidth: 1920) {
-              ...GatsbyImageSharpSizes_withWebp
+            fluid(maxWidth: 1920) {
+              ...GatsbyImageSharpFluid_withWebp
             }
           }
         }
@@ -747,15 +746,15 @@ export const query = graphql`
             }
             poster {
               full: childImageSharp {
-                sizes(maxHeight: 230, maxWidth: 163) {
-                  ...GatsbyImageSharpSizes_withWebp
+                fluid(maxHeight: 230, maxWidth: 163) {
+                  ...GatsbyImageSharpFluid_withWebp
                 }
               }
             }
             image {
               full: childImageSharp {
-                sizes(maxWidth: 1920) {
-                  ...GatsbyImageSharpSizes_withWebp
+                fluid(maxWidth: 1920) {
+                  ...GatsbyImageSharpFluid_withWebp
                 }
               }
             }

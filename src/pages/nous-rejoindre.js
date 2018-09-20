@@ -1,26 +1,22 @@
 import React from "react";
+import { graphql } from "gatsby";
 import Helmet from "react-helmet";
-import styled from "styled-components";
 import nl2br from "react-nl2br";
 import remark from "remark";
 import reactRenderer from "remark-react";
 
+import Layout from "../components/layout";
 import SEO from "../components/seo";
-import { PageContainer, PageTitle, PageSeparator, PageOverview, PageInfo } from "../components/page/page";
+import { PageTitle, PageSeparator, PageOverview, PageInfo } from "../components/page/page";
 import PageHeader from "../components/page/pageHeader";
 import PageNav from "../components/page/pageNav";
 import StyledSection from "../components/styledComponents/styledSection";
 import Gallery from "../components/gallery";
-import SpectacleListe from "../components/spectacle/spectacleListe";
 import Pellicule from "../components/pellicule/pellicule";
 import slugify from "../functions/slugify";
 
 
-const MdLink = styled.a.attrs({
-  target: '_blank',
-})``
-
-export default class CompagniePage extends React.Component {
+export default class FormationPage extends React.Component {
   constructor(props) {
     super(props);
 
@@ -32,12 +28,6 @@ export default class CompagniePage extends React.Component {
     })
     this.page.slug = props.data.page.fields.slug;
     this.activeGallery = '';
-
-    this.spectacles = props.data.spectacles.edges.map(function(edge) {
-      const spectacle = edge.node.frontmatter;
-      spectacle.slug = edge.node.fields.slug;
-      return spectacle;
-    })
 
     this.getNavLinks = this.getNavLinks.bind(this);
     this.findImageIndex = this.findImageIndex.bind(this);
@@ -79,18 +69,14 @@ export default class CompagniePage extends React.Component {
         text: section.title,
       })
     })
-    navLinks.push({
-      url: '#des-spectacles',
-      text: 'Des spectacles',
-    })
 
     return navLinks;
   }
 
   findImageIndex(gallery, image) {
     let index = -1;
-    for (let i = 0; i < gallery.length && index == -1; i++){
-      if (gallery[i].url.full.sizes.src === image.url.full.sizes.src) {
+    for (let i = 0; i < gallery.length && index === -1; i++){
+      if (gallery[i].url.full.fluid.src === image.url.full.fluid.src) {
         index = i;
       }
     }
@@ -137,7 +123,7 @@ export default class CompagniePage extends React.Component {
     this.activeGallery = gallery.slice(8);
     const section = this.page.sections.find(this.findSectionBySlug);
     const slug = slugify(image.title);
-    history.pushState(
+    window.history.pushState(
       { url: this.page.slug + '#' + gallery + '&photo=' + slug},
       this.siteMetadata.title + ' ' + this.siteMetadata.titleSeparator + this.page.title + 'Galerie de ' + section.title,
       '#' + gallery + '&photo=' + slug
@@ -164,7 +150,7 @@ export default class CompagniePage extends React.Component {
   }
 
   closePellicule() {
-    history.back();
+    window.history.back();
     this.setState({ pellicule: null });
   }
 
@@ -197,7 +183,7 @@ export default class CompagniePage extends React.Component {
     const gallery = section.gallery.content.frontmatter.images;
     const image = gallery[imageIndex];
     const slug = slugify(image.title);
-    history.replaceState(
+    window.history.replaceState(
       { url: document.location.pathname + '#galerie=' + this.activeGallery + '&photo=' + slug },
       this.siteMetadata.title + this.siteMetadata.titleSeparator + this.page.title + 'Galerie de ' + section.title,
       document.location.pathname + '#galerie=' + this.activeGallery + '&photo=' + slug
@@ -208,15 +194,10 @@ export default class CompagniePage extends React.Component {
     const pageTitle = this.siteMetadata.title + this.siteMetadata.titleSeparator + this.page.title;
     const hasPellicule = this.state.pellicule != null;
     const onClickGallery = this.onClickGallery;
-    const mdOptions = {
-      remarkReactComponents: {
-        a: MdLink,
-      },
-    };
     const navLinks = this.getNavLinks();
 
     return(
-      <React.Fragment>
+      <Layout>
         <Helmet>
           <title>{pageTitle}</title>
         </Helmet>
@@ -224,9 +205,9 @@ export default class CompagniePage extends React.Component {
           title={this.page.title}
           slug={this.page.slug}
           description={this.page.overview}
-          image={this.page.image.full.sizes.src}
+          image={this.page.image.full.fluid.src}
           siteMetadata={this.siteMetadata}
-          jsonType="company"
+          jsonType="school"
           jsonData={this.siteMetadata}
         />
         {hasPellicule ? (
@@ -258,7 +239,7 @@ export default class CompagniePage extends React.Component {
               id={section.slug}
               title={section.title}
             >
-              {remark().use(reactRenderer, mdOptions).processSync(section.content).contents}
+              {remark().use(reactRenderer).processSync(section.content).contents}
             </StyledSection>
             {section.gallery ? (
               <Gallery
@@ -270,36 +251,19 @@ export default class CompagniePage extends React.Component {
             : null }
           </React.Fragment>
         ))}
-        <StyledSection
-          id="des-spectacles"
-          title="Des spectacles"
-        >
-          <p>Depuis la création de la compagnie en 1997, Hazem El Awadly a
-          adapté et mis en scène plus de 20 spectacles, que ce soit pour des
-          publics adultes ou plus jeunes.</p>
-          <SpectacleListe
-            spectacles={this.spectacles}
-          />
-        </StyledSection>
-      </React.Fragment>
+      </Layout>
     )
   }
 }
 
 export const query = graphql`
-  query CompagnieQuery {
+  query FormationQuery {
     site {
       siteMetadata {
         title
         titleSeparator
         siteUrl
         description
-        company {
-          fullName
-          shortName
-          creation
-          creator
-        }
         contact {
           email
           landline
@@ -322,7 +286,7 @@ export const query = graphql`
       }
     }
     page: markdownRemark(
-      fields: { slug: { eq: "/la-compagnie/" } }
+      fields: { slug: { eq: "/nous-rejoindre/" } }
       frontmatter: { layout: { eq: "page" } }
     ) {
       fields {
@@ -332,8 +296,8 @@ export const query = graphql`
         title
         image {
           full: childImageSharp {
-            sizes(maxWidth: 1920) {
-              ...GatsbyImageSharpSizes_withWebp
+            fluid(maxWidth: 1920) {
+              ...GatsbyImageSharpFluid_withWebp
             }
           }
         }
@@ -346,46 +310,6 @@ export const query = graphql`
             }
           }
           content
-        }
-      }
-    }
-    spectacles: allMarkdownRemark(
-      filter:{
-        frontmatter: {
-          layout: {eq: "spectacle"}
-          list: {eq: true}
-        }
-    	}
-      sort: {
-        fields: [frontmatter___creation]
-        order: ASC
-      }
-    )
-    {
-      edges {
-        node {
-          fields {
-            slug
-          }
-          frontmatter {
-            title
-            subtitle
-            creation
-            duration {
-              time
-              intermission
-            }
-            notice
-            categories
-            poster {
-              full: childImageSharp {
-                sizes(maxHeight: 230, maxWidth: 163) {
-                  ...GatsbyImageSharpSizes_withWebp
-                }
-              }
-            }
-            overview
-          }
         }
       }
     }

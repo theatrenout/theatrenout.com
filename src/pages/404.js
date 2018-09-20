@@ -1,9 +1,11 @@
 import React from "react";
+import { graphql } from "gatsby";
 import Helmet from "react-helmet";
 import styled from "styled-components";
 
 import theme from "../theme";
-import { PageContainer, PageTitle, PageSubtitle, PageSeparator } from "../components/page/page";
+import Layout from "../components/layout";
+import { PageTitle, PageSubtitle, PageSeparator } from "../components/page/page";
 import PageHeader from "../components/page/pageHeader";
 
 
@@ -33,10 +35,9 @@ export default class ErrorPage extends React.Component {
 
   render() {
     const pageTitle = this.siteMetadata.title + this.siteMetadata.titleSeparator + this.page.title;
-    const pageUrl = this.siteMetadata.siteUrl.slice(0,-1) + this.page.slug;
 
     return(
-      <React.Fragment>
+      <Layout>
         <Helmet>
           <title>{pageTitle}</title>
           <meta name="description" content={this.page.overview} />
@@ -48,7 +49,7 @@ export default class ErrorPage extends React.Component {
           <Separator />
           <PageSubtitle>{this.page.overview}</PageSubtitle>
         </Container>
-      </React.Fragment>
+      </Layout>
     )
   }
 }
@@ -73,8 +74,8 @@ export const query = graphql`
         title
         image {
           full: childImageSharp {
-            sizes(maxWidth: 1920) {
-              ...GatsbyImageSharpSizes_withWebp
+            fluid(maxWidth: 1920) {
+              ...GatsbyImageSharpFluid_withWebp
             }
           }
         }
