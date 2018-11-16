@@ -23,7 +23,7 @@ sections:
       Une **vraie troupe professionnelle** en travail perpétuel avec 20 ans d'existence et plus de 20 pièces montées.
   - title: Organisation du travail
     content: >-
-      La saison 2018-2019 commencera en novembre 2018 par une nouvelle création.
+      La saison 2018-2019 de la troupe commencera en décembre 2019 par une reprise du [Livre blanc](/le-livre-blanc). Nous recherchons donc en priorité des comédiens masculins.
 
 
       Le travail demande une disponibilité à temps plein, à savoir cinq jours par semaine.
