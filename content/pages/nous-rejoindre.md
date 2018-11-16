@@ -23,7 +23,7 @@ sections:
       Une **vraie troupe professionnelle** en travail perpétuel avec 20 ans d'existence et plus de 20 pièces montées.
   - title: Organisation du travail
     content: >-
-      La saison 2018-2019 de la troupe commencera en décembre 2019 par une reprise du [Livre blanc](/le-livre-blanc). Nous recherchons donc en priorité des comédiens masculins.
+      La saison 2018-2019 de la troupe commencera en décembre 2019 par une reprise du [Livre blanc](/le-livre-blanc). Nous recherchons donc en priorité des comédiens masculins entre 18 et 26 ans.
 
 
       Le travail demande une disponibilité à temps plein, à savoir cinq jours par semaine.
@@ -47,5 +47,5 @@ sections:
       Renseignez-vous sur notre travail et sur notre univers en explorant nos [créations précédentes](/notre-histoire#nos-spectacles).
 
 
-      Pour nous rejoindre, ou si vous désirez plus de détails sur notre formation, [contactez-nous](/informations-pratiques#nous-contacter).
+      Pour nous rejoindre, ou si vous désirez plus de détails sur notre formation, contactez-nous directement à [troupe@theatrenout.com](mailto:troupe@theatrenout.com).
 ---
