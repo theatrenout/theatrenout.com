@@ -19,6 +19,17 @@ const HeaderContainer = styled.header`
   }
 `;
 
+const HeaderBanner = styled.aside`
+  background-color: red;
+  width: 100%;
+  
+
+  ${theme.media.desktop} {
+    position: absolute;
+    top: 0;
+  }
+`;
+
 const HeaderNav = styled.div`
   background-color: ${theme.color.primary};
   display: flex;
@@ -84,6 +95,13 @@ class Header extends React.Component {
   render() {
     return (
       <HeaderContainer>
+        <HeaderBanner>
+          <p>
+            <a href="https://www.onparticipe.fr/cagnottes/16hCWiIq" target="_blank">
+              Le Théâtre Nout est en difficultés financières, participez à notre cagnotte en cliquant ici.
+            </a>
+          </p>
+	</HeaderBanner>
         <HeaderNav role="banner">
           <Menu
             type="menu"
