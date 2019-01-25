@@ -33,6 +33,29 @@ const HeaderNav = styled.div`
   }
 `;
 
+const HeaderBannerContainer = styled.aside`
+  background-color: red;
+  width: 100%;
+
+
+  ${theme.media.desktop} {
+    position: absolute;
+    top: 0;
+  }
+`;
+
+const HeaderBannerText = styled.p`
+  text-align: center;
+  margin: 0;
+  padding: .25rem;
+`;
+
+const HeaderBannerLink = styled.a`
+  color: white;
+  text-decoration: none;
+  min-height: 0;
+`;
+
 const Menu = styled(Ctrl)`
   flex: 0 0 auto;
 
@@ -106,6 +129,13 @@ class Header extends React.Component {
             aria-haspopup="true"
           />
         </HeaderNav>
+        <HeaderBannerContainer>
+          <HeaderBannerText>
+            <HeaderBannerLink href="https://www.onparticipe.fr/cagnottes/16hCWiIq" target="_blank">
+              Le Théâtre Nout est en difficulté financière, participez à notre cagnotte en cliquant ici.
+            </HeaderBannerLink>
+          </HeaderBannerText>
+	      </HeaderBannerContainer>
       </HeaderContainer>
     );
   }
