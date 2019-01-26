@@ -5,8 +5,6 @@ creation: ''
 list: false
 categories:
   - Troupe
-shows:
-  customdate: 2019-01
 poster: ../images/teaser-affiche.jpg
 image: ../images/teaser-photo.jpg
 overview: Travail en cours...

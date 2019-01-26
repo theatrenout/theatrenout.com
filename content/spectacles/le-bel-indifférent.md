@@ -10,6 +10,14 @@ list: false
 categories:
   - Adulte
   - Troupe
+shows:
+  dates:
+    - time: '20:30'
+      days:
+      - '2019-02-09'
+      - '2019-02-16'
+      - '2019-02-23'
+  reservation: 'https://www.billetreduc.com/230043/evt.htm'
 poster: ../images/donya-affiche.jpg
 image: ../images/bel-indifferent-3.jpg
 trailer: 'https://youtu.be/DU37lHM-FAs'

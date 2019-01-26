@@ -9,8 +9,6 @@ list: true
 categories:
   - Jeune public
   - Troupe
-shows:
-  customdate: 2019-01
 poster: ../images/pinocchio-affiche.jpg
 image: ../images/pinocchio-1.jpg
 trailer: 'https://youtu.be/Wg5SEmngMQ4'
