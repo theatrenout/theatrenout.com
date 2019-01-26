@@ -16,7 +16,7 @@ shows:
       - '2019-02-09'
       - '2019-02-16'
       - '2019-02-23'
-  reservation: 'https://www.billetreduc.com/'
+  reservation: 'https://www.billetreduc.com/230047/evt.htm'
 poster: ../images/ali-baba-affiche.jpg
 image: ../images/ali-baba-2.jpg
 overview: 'Le fabuleux conte adapté avec beaucoup d''humour, de piquant et de surprises.'
