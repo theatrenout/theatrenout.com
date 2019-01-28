@@ -28,7 +28,7 @@ export default class SpectacleCast extends React.Component {
       <CastContainer
         className={this.props.className}
       >
-        {this.props.members.map((member, index) => (
+        {this.props.cast.map((member, index) => (
           <CastItem key={index}>
             <CastRole>{member.role}</CastRole>
             <CastNames>{nl2br(member.names)}</CastNames>

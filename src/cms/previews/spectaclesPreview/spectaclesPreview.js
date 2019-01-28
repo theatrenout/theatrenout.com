@@ -51,23 +51,18 @@ export class SpectaclesPreview extends React.Component {
           author: comment.toObject().author,
           text: comment.toObject().text
         }
-      });
+      })
     }
 
     // Cast
     let cast = null;
     if (data.cast) {
-      cast = data.cast.toObject();
-      if (cast.members) {
-        const members = cast.members.toArray().map(function(member) {
-          return {
-            role: member.toObject().role,
-            names: member.toObject().names
-          }
-        })
-        cast.background = this.getRawPath(cast.background);
-        cast.members = members;
-      }
+      cast = data.cast.toArray().map(function(member) {
+        return {
+          role: member.toObject().role,
+          names: member.toObject().names
+        }
+      })
     }
 
     // Press
@@ -81,23 +76,8 @@ export class SpectaclesPreview extends React.Component {
             author: member.toObject().author
           }
         })
-        press.background = this.getRawPath(press.background);
         press.reviews = reviews;
       }
-    }
-
-    // Play
-    let play = null;
-    if (data.play) {
-      play = data.play.toObject();
-      play.background = this.getRawPath(play.background);
-    }
-
-    // Intent
-    let intent = null;
-    if (data.intent) {
-      intent = data.intent.toObject();
-      intent.background = this.getRawPath(intent.background);
     }
 
     // Duration
@@ -126,10 +106,10 @@ export class SpectaclesPreview extends React.Component {
       overview: data.overview,
       comments: comments,
       cast: cast,
-      play: play,
-      intent: intent,
+      play: data.play,
+      intent: data.intent,
       press: press,
-    };
+    }
 
     this.onClickVideo = this.onClickVideo.bind(this);
     this.closePellicule = this.closePellicule.bind(this);
@@ -208,7 +188,7 @@ export class SpectaclesPreview extends React.Component {
           <StyledSection>
             <SectionTitle>Équipe</SectionTitle>
             <SpectacleCast
-              members={this.spectacle.cast.members}
+              cast={this.spectacle.cast}
             />
           </StyledSection>
         )
@@ -216,14 +196,14 @@ export class SpectaclesPreview extends React.Component {
         {hasPlay ? (
           <StyledSection>
             <SectionTitle>À propos de l'œuvre</SectionTitle>
-            <div>{remark().use(reactRenderer).processSync(this.spectacle.play.text).contents}</div>
+            <div>{remark().use(reactRenderer).processSync(this.spectacle.play).contents}</div>
           </StyledSection>
         )
         : null }
         {hasIntent ? (
           <StyledSection>
             <SectionTitle>Intentions de mise en scène</SectionTitle>
-            <div>{remark().use(reactRenderer).processSync(this.spectacle.intent.text).contents}</div>
+            <div>{remark().use(reactRenderer).processSync(this.spectacle.intent).contents}</div>
           </StyledSection>
         )
         : null }
