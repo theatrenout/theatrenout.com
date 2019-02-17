@@ -199,13 +199,15 @@ class SEO extends React.Component {
         const playJson = this.getPlayJson(playData);
 
         const performers = [];
-        spectacle.cast.forEach(function(member) {
-          performers.push({
-            "@type" : "Person",
-            "name" : member.names,
-            "jobTitle" : member.role,
+        if (spectacle.cast != null) {
+          spectacle.cast.forEach(function(member) {
+            performers.push({
+              "@type" : "Person",
+              "name" : member.names,
+              "jobTitle" : member.role,
+            });
           });
-        });
+        }
 
         spectacle.shows.dates.forEach(function(date) {
           const duration = {
