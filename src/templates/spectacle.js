@@ -228,7 +228,7 @@ export default class SpectacleTemplate extends React.Component {
   render() {
     const hasPellicule = this.state.pellicule != null;
     const hasGallery = this.gallery.length > 0;
-    const hasCast = this.spectacle.cast != null;
+    const hasCast = this.spectacle.cast != null && this.spectacle.cast.length > 0;
     const hasPlay = this.spectacle.play != null;
     const hasIntent = this.spectacle.intent != null;
     const hasPress = this.spectacle.press != null;
