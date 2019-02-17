@@ -310,7 +310,7 @@ export default class SpectacleTemplate extends React.Component {
           : null }
           {hasPlay ? (
             <StyledSection
-              title="À propos de l'œuvre"
+              title="À propos"
             >
               <div>{remark().use(reactRenderer).processSync(this.spectacle.play).contents}</div>
             </StyledSection>
