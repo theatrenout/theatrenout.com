@@ -5,7 +5,7 @@ import styled from "styled-components";
 
 import theme from "../theme";
 import Layout from "../components/layout";
-import { PageTitle, PageSubtitle, PageSeparator } from "../components/page/page";
+import { PageInfo, PageTitle, PageSubtitle, PageSeparator } from "../components/page/page";
 import PageHeader from "../components/page/pageHeader";
 
 
@@ -13,15 +13,6 @@ const Container = styled(PageHeader).attrs({
   tag: 'article',
 })`
   padding-bottom: 0;
-`
-
-const Title = styled(PageTitle)`
-  color: ${theme.color.lighter};
-`
-
-const Separator = styled(PageSeparator)`
-  font-size: 2rem;
-  margin-bottom: 2rem;
 `
 
 export default class ErrorPage extends React.Component {
@@ -45,9 +36,11 @@ export default class ErrorPage extends React.Component {
         <Container
           background={this.page.image}
         >
-          <Title>{this.page.title}</Title>
-          <Separator />
-          <PageSubtitle>{this.page.overview}</PageSubtitle>
+          <PageInfo>
+            <PageTitle>{this.page.title}</PageTitle>
+            <PageSeparator />
+            <PageSubtitle>{this.page.overview}</PageSubtitle>
+          </PageInfo>
         </Container>
       </Layout>
     )

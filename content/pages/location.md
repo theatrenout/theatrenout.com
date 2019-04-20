@@ -3,7 +3,7 @@ layout: page
 title: Location
 image: ../images/accueil-1.jpg
 overview: |-
-  Location, représentations, répétitions... Le Théâtre Nout vous ouvre ses portes.
+  Location, représentations, répétitions… Le Théâtre Nout vous ouvre ses portes.
 sections:
   - title: Pour une privatisation
     gallery: ../galleries/location-accueil.md
@@ -11,7 +11,7 @@ sections:
       Si vous souhaitez privatiser notre théâtre pour une des raisons suivantes :
 
 
-      * Fêter un anniversaire d'enfant, d'adulte ou tout autre événement,
+      * Fêter un anniversaire d’enfant, d’adulte ou tout autre événement,
 
 
       * Planifier un repas de groupe,
@@ -26,16 +26,16 @@ sections:
       Vous pouvez profiter des options suivantes :
 
 
-      * Une représentation d'un de nos spectacles jeune public ou adulte,
+      * Une représentation d’un de nos spectacles jeune public ou adulte,
 
 
       * Un goûter ou un repas oriental préparé et servi par nos soins,
 
 
-      * Un accueil dynamique et chaleureux, avec une équipe à l'écoute de vos envies.
+      * Un accueil dynamique et chaleureux, avec une équipe à l’écoute de vos envies.
 
 
-      Pour obtenir plus de détails sur ce que nous pouvons vous proposer, n'hésitez pas à [nous contacter](/informations-pratiques#nous-contacter).
+      Pour obtenir plus de détails sur ce que nous pouvons vous proposer, n’hésitez pas à [nous contacter](/informations-pratiques#nous-contacter).
   - title: Pour présenter votre travail
     gallery: ../galleries/location-salle.md
     content: >-
@@ -57,7 +57,7 @@ sections:
       Nous mettons à votre disposition deux espaces :
 
 
-      L'**accueil du théâtre** offre les caractéristiques suivantes :
+      L’**accueil du théâtre** offre les caractéristiques suivantes :
 
 
       * Petite scène, parfaite pour les concerts ou les petits spectacles,
@@ -81,7 +81,7 @@ sections:
       * Disposition de salle de spectacle plus courante, avec des gradins,
 
 
-      Vous n'ếtes pas sûr(e) que notre lieu corresponde à vos besoins ? [Contactez-nous](/informations-pratiques#nous-contacter) pour voir ce que nous pouvons faire pour vous.
+      Vous n’ếtes pas sûr(e) que notre lieu corresponde à vos besoins ? [Contactez-nous](/informations-pratiques#nous-contacter) pour voir ce que nous pouvons faire pour vous.
   - title: Pour des répétitions
     content: >-
       Si vous cherchez un lieu de répétition facilement accessible en transports en commun depuis Paris, venez profiter de notre salle de spectacle :
@@ -96,5 +96,5 @@ sections:
       * Équipe disponible et accueillante, pour vous aider à prendre vos marques dans notre espace,
 
 
-      Pour obtenir plus d'informations et connaître nos tarifs, [contactez-nous](/informations-pratiques#nous-contacter)
+      Pour obtenir plus d’informations et connaître nos tarifs, [contactez-nous](/informations-pratiques#nous-contacter)
 ---

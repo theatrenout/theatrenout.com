@@ -1,6 +1,8 @@
 import React from "react";
 import { graphql } from "gatsby";
 import Helmet from "react-helmet";
+import styled from "styled-components";
+import nl2br from "react-nl2br";
 
 import Layout from "../components/layout";
 import SEO from "../components/seo";
@@ -8,7 +10,15 @@ import Shows from "../functions/shows";
 import SpectacleHeaderList from "../components/spectacle/spectacleHeaderList";
 import SpectaclePosterNav from "../components/spectacle/spectaclePosterNav";
 import Pellicule from "../components/pellicule/pellicule";
+import { PageInfo, PageTitle, PageOverview, PageSeparator } from "../components/page/page";
+import PageHeader from "../components/page/pageHeader";
 
+
+const FallbackContainer = styled(PageHeader).attrs({
+  tag: 'article',
+})`
+  padding-bottom: 0;
+`
 
 export default class IndexPage extends React.Component {
   constructor(props) {
@@ -17,6 +27,7 @@ export default class IndexPage extends React.Component {
     this.siteMetadata = props.data.site.siteMetadata;
 
     this.spectacles = Shows.getSortedSpectacles(props.data.spectacles);
+    this.page = props.data.page.frontmatter;
 
     this.goToNextSlide = this.goToNextSlide.bind(this);
     this.goToPrevSlide = this.goToPrevSlide.bind(this);
@@ -93,7 +104,14 @@ export default class IndexPage extends React.Component {
   }
 
   render() {
-    const hasPellicule = this.state.pellicule != null;
+    const hasSpectacle = this.spectacles.length >= 1;
+    let pellicule;
+
+    if (this.state.pellicule != null) {
+      pellicule = <Pellicule content={this.state.pellicule} onClose={this.closePellicule} siteMetadata={this.siteMetadata} />;
+    } else {
+      pellicule = null;
+    }
 
     return(
       <Layout>
@@ -109,26 +127,34 @@ export default class IndexPage extends React.Component {
           jsonType="website"
           jsonData={this.siteMetadata}
         />
-        {hasPellicule ? (
-          <Pellicule
-            content={this.state.pellicule}
-            onClose={this.closePellicule}
-            siteMetadata={this.siteMetadata}
-          />
+        {hasSpectacle ? (
+          <>
+            {pellicule}
+            <SpectaclePosterNav
+              thumbs={this.spectacles}
+              activeIndex={this.state.activeIndex}
+              direction={this.state.slideDirection}
+              goToNext={this.goToNextSlide}
+              goToPrev={this.goToPrevSlide}
+            />
+            <SpectacleHeaderList
+              spectacles={this.spectacles}
+              activeIndex={this.state.activeIndex}
+              onClickVideo={this.onClickVideo}
+            />
+          </>
         )
-        : null }
-        <SpectaclePosterNav
-          thumbs={this.spectacles}
-          activeIndex={this.state.activeIndex}
-          direction={this.state.slideDirection}
-          goToNext={this.goToNextSlide}
-          goToPrev={this.goToPrevSlide}
-        />
-        <SpectacleHeaderList
-          spectacles={this.spectacles}
-          activeIndex={this.state.activeIndex}
-          onClickVideo={this.onClickVideo}
-        />
+        : (
+          <FallbackContainer
+            background={this.page.image}
+          >
+            <PageInfo>
+              <PageTitle>{this.page.title}</PageTitle>
+              <PageSeparator />
+              <PageOverview>{nl2br(this.page.overview)}</PageOverview>
+            </PageInfo>
+          </FallbackContainer>
+        )}
       </Layout>
     )
   }
@@ -161,6 +187,25 @@ export const query = graphql`
           latitude
           longitude
         }
+      }
+    }
+    page: markdownRemark(
+      fields: { slug: { eq: "/" } }
+      frontmatter: { layout: { eq: "page" } }
+    ) {
+      fields {
+        slug
+      }
+      frontmatter {
+        title
+        image {
+          full: childImageSharp {
+            fluid(maxWidth: 1920) {
+              ...GatsbyImageSharpFluid_withWebp
+            }
+          }
+        }
+        overview
       }
     }
     spectacles: allMarkdownRemark(

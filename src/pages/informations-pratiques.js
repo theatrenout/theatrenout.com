@@ -288,12 +288,12 @@ export default class InformationsPage extends React.Component {
             </Contact>
             <h1>Par téléphone</h1>
             <Contact>
-              <ContactItem
+              {/*<ContactItem
                 href={'tel:' + this.siteMetadata.contact.landline.replace(/ /g, '')}
               >
                 {this.siteMetadata.contact.landline}
               </ContactItem>
-              ou
+              ou*/}
               <ContactItem
                 href={'tel:' + this.siteMetadata.contact.portable.replace(/ /g, '')}
               >

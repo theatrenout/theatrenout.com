@@ -134,7 +134,7 @@ export default class Layout extends React.Component {
               siteMetadata {
                 title
                 contact {
-                  landline
+                  portable
                   facebook
                   youtube
                   newsletter
@@ -203,7 +203,7 @@ export default class Layout extends React.Component {
               <Footer
                 title={data.site.siteMetadata.title}
                 address={data.site.siteMetadata.address}
-                phone={data.site.siteMetadata.contact.landline}
+                phone={data.site.siteMetadata.contact.portable}
               />
             </Body>
           </React.Fragment>
