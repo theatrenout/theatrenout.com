@@ -6,6 +6,6 @@ overview: |-
   Les prochains spectacles et événements prévus au sein de notre modeste écrin.
 sections:
   - title: ''
-    gallery: ../galleries/location-accueil.md
+    gallery: ../galleries/formation.md
     content: ''
 ---

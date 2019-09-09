@@ -6,6 +6,6 @@ overview: |-
   Venez rêver et vous perdre dans l’étendue des songes que nous vous faisons vivre au Théâtre Nout.
 sections:
   - title: ''
-    gallery: ../galleries/location-accueil.md
+    gallery: ../galleries/formation.md
     content: ''
 ---

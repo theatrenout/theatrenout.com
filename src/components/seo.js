@@ -17,7 +17,7 @@ class SEO extends React.Component {
         "postalCode" : data.address.postalCode,
         "addressCountry" : "FR",
         "email" : data.contact.email,
-        "telephone" : data.contact.landline,
+        "telephone" : data.contact.portable,
       },
       "geo" : {
         "@type" : "GeoCoordinates",

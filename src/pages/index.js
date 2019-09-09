@@ -170,13 +170,11 @@ export const query = graphql`
         description
         contact {
           email
-          landline
           portable
           socialUsername
         }
         images {
           inside
-          outside
           logo
         }
         address {
