@@ -197,11 +197,11 @@ export default class InformationsPage extends React.Component {
             </Address>
             <Map
               frameBorder="0"
-              src="https://framacarte.org/fr/map/theatre-nout_23962?scaleControl=false&miniMap=false&scrollWheelZoom=false&zoomControl=true&allowEdit=false&moreControl=false&searchControl=false&tilelayersControl=false&embedControl=false&datalayersControl=false&onLoadPanel=undefined&captionBar=false&fullscreenControl=false&locateControl=false&measureControl=false&editinosmControl=false&datalayers=38622#13/48.9362/2.3427"
+              src="https://framacarte.org/fr/map/theatre-nout_56986?scaleControl=false&miniMap=false&scrollWheelZoom=false&zoomControl=true&allowEdit=false&moreControl=false&searchControl=false&tilelayersControl=false&embedControl=false&datalayersControl=false&onLoadPanel=undefined&captionBar=false&fullscreenControl=false&locateControl=false&measureControl=false&editinosmControl=false"
             />
             <p>
               <a
-                href="https://framacarte.org/fr/map/theatre-nout_23962#15/48.937/2.338"
+                href="https://framacarte.org/fr/map/theatre-nout_56986"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -219,45 +219,17 @@ export default class InformationsPage extends React.Component {
               <h1>En transports en commun</h1>
               <ul>
                 <li>
-                  <h1>
-                    <Icon type="rer" title="RER" />
-                    <Icon type="rerD" title="D" />
-                    <SpacedText>ou</SpacedText>
-                    <Icon type="train" title="Transilien" />
-                    <Icon type="tH" title="H" />
-                  </h1>
-                  <p>Arrêt Saint-Denis<br />
-                  à 5 minutes de Gare du Nord<br />
-                  à 15 minutes de Châtelet — Les Halles</p>
+                  <p><span style={{display: 'block', fontFamily: theme.font.primaryAll, fontSize: '.9rem'}}>TER</span>
+                  Ligne Paris-Bercy − Nevers<br />
+                  descendre à Gien</p>
                 </li>
                 <li>
-                  <h1>
-                    <Icon type="metro" title="Métro" />
-                    <Icon type="m13" title="13" />
-                  </h1>
-                  <p>Arrêt Saint-Denis — Porte de Paris, puis T8<br />
-                  Arrêt Basilique de Saint-Denis, puis T1</p>
+                  <h1>puis</h1>
                 </li>
                 <li>
-                  <h1>
-                    <Icon type="tramway" title="Tramway"/>
-                    <Icon type="t1" title="1"/>
-                  </h1>
-                  <p>Arrêt L’Île-Saint-Denis</p>
-                </li>
-                <li>
-                  <h1>
-                    <Icon type="tramway" title="Tramway" />
-                    <Icon type="t8" title="8" />
-                  </h1>
-                  <p>Arrêt Saint-Denis — Gare</p>
-                </li>
-                <li>
-                  <h1>
-                    <Icon type="bus" title="Bus" />
-                    <Icon type="b237" title="237" />
-                  </h1>
-                  <p>Arrêt Mairie de l’Île-Saint-Denis</p>
+                  <p><span style={{display: 'block', fontFamily: theme.font.primaryAll, fontSize: '.9rem'}}>Autocar</span>
+                  Ligne Gien − Aubigny-sur-Nère<br />
+                  Arrêt Argent-sur-Sauldre</p>
                 </li>
               </ul>
             </NoFlex>
@@ -266,7 +238,7 @@ export default class InformationsPage extends React.Component {
               <p>
                 <span style={{display: 'block', fontFamily: theme.font.primaryAll, fontSize: '.9rem'}}>Coordonnées GPS :</span>
                 {this.siteMetadata.address.latitude + ',' + this.siteMetadata.address.longitude}
-                <GPSLink href="https://maps.google.com/?daddr=Théâtre+Nout,+7+Rue+du+19+Mars+1962,+93450+L'Île-Saint-Denis">
+                <GPSLink href="https://maps.google.com/?daddr=Théâtre+Nout,+3+Rue+Nationale,+18410+Argent-sur-Sauldre">
                   Allons-y !
                 </GPSLink>
                 Parking limité
@@ -288,12 +260,6 @@ export default class InformationsPage extends React.Component {
             </Contact>
             <h1>Par téléphone</h1>
             <Contact>
-              {/*<ContactItem
-                href={'tel:' + this.siteMetadata.contact.landline.replace(/ /g, '')}
-              >
-                {this.siteMetadata.contact.landline}
-              </ContactItem>
-              ou*/}
               <ContactItem
                 href={'tel:' + this.siteMetadata.contact.portable.replace(/ /g, '')}
               >
@@ -317,13 +283,11 @@ export const query = graphql`
         description
         contact {
           email
-          landline
           portable
           socialUsername
         }
         images {
           inside
-          outside
           logo
         }
         address {
@@ -336,7 +300,7 @@ export const query = graphql`
         }
       }
     }
-    image: file(name: {eq: "exterieur-1"}) {
+    image: file(name: {eq: "accueil"}) {
       full: childImageSharp {
         fluid(maxWidth: 1920) {
           ...GatsbyImageSharpFluid_withWebp

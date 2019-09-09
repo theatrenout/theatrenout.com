@@ -7,6 +7,6 @@ overview: |-
   pour être au courant des prochains spectacles
 sections:
   - title: ''
-    gallery: ../galleries/location-accueil.md
+    gallery: ../galleries/formation.md
     content: ''
 ---

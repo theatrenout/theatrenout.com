@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Notre histoire
-image: ../images/accueil-6.jpg
+image: ../images/premierlieu-3.jpg
 overview: |-
   Le Théâtre Nout, c’est avant tout la compagnie qui le gère.
   Vous découvrirez ici ses origines, ses membres et ses spectacles.
@@ -21,9 +21,13 @@ sections:
       C’est en 1997 qu’il fonde la **Compagnie du Théâtre Nout**. Le premier spectacle qu’il y monte est *L’histoire d’un muezzin*, d’après *Le Sultan indécis* de Tawfik El Hakim. Après l’avoir présenté au festival d’Avignon et en tournée dans plusieurs pays dont l’Égypte et la Tunisie, il est temps pour lui de créer son propre théâtre.
 
 
-      Le **Théâtre Nout** voit alors le jour à l’Île-Saint-Denis en juin 2000. Depuis plus de 15 ans maintenant, ce théâtre continue à grandir, à évoluer, à produire des pièces, et à accueillir des spectateurs toujours plus nombreux.
+      Le **Théâtre Nout** voit alors le jour à l’Île-Saint-Denis en juin 2000. En 2019, le théâtre est contraint de changer de lieu et s’installe à Argent-sur-Sauldre dans le Cher. Depuis presque 20 ans maintenant, ce théâtre continue à grandir, à évoluer, à produire des pièces, et à accueillir des spectateurs toujours plus nombreux.
+  - title: Le premier lieu
+    gallery: ../galleries/histoire-premier-lieu.md
+    content: >-
+      C'est dans cet écrin situé tout proche de Paris, à l’Île-Saint-Denis plus précisément, que le théâtre s’est développé et a réussi à fidéliser ses spectateurs grâce à la qualité de ses nombreuses créations. Bien que le lieu, situé dans un bâtiment industriel, ne paye pas de mine de l'extérieur, il suffisait de passer le pas de la porte pour être charmé par une ambiance chaleureuse aux notes d'Orient. Après plus de 18 ans de bon et loyaux services, cet espace prend maintenant un repos bien mérité tandis que le Théâtre Nout renaît ailleurs. Si vous repassez dans les environs, peut-être en sentirez-vous encore la magie…
   - title: La troupe
-    gallery: ../galleries/la-compagnie-la-troupe.md
+    gallery: ../galleries/histoire-la-troupe.md
     content: >-
       La troupe du Théâtre Nout est bien entendue composée des nombreux comédiens qui vont et qui viennent pour jouer dans les différents spectacles de la troupe. Elle est également formée d’une équipe permanente :
 

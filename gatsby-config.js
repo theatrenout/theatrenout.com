@@ -3,7 +3,7 @@ module.exports = {
     title: 'Théâtre Nout',
     siteUrl: 'https://www.theatrenout.com/',
     titleSeparator: ' ✴ ',
-    description: 'Petit écrin qui vous emmène dans son univers oriental, situé à 15 minutes de Paris intra-muros, le Théâtre Nout et son équipe sont prêts à vous accueillir à bras ouverts.',
+    description: 'Petit écrin qui vous emmène dans son univers oriental, situé à Argent-sur-Sauldre dans le Cher, le Théâtre Nout et son équipe sont prêts à vous accueillir à bras ouverts.',
     company: {
       fullName: 'Compagnie Internationale du Théâtre Nout',
       shortName: 'CITN',
@@ -11,13 +11,11 @@ module.exports = {
       creator: 'Hazem El Awadly',
     },
     images: {
-      inside: '/accueil-1.jpg',
-      outside: '/exterieur-1.jpg',
+      inside: '/accueil.jpg',
       logo: '/theatre-nout-logo.jpg',
     },
     contact: {
       email: 'accueil@theatrenout.com',
-      landline: '01 42 43 90 29',
       portable: '06 89 98 49 41',
       socialUsername: 'theatrenout',
       facebook: 'https://www.facebook.com/pages/Th%C3%A9%C3%A2tre-Nout/121789434510665',
@@ -25,12 +23,12 @@ module.exports = {
       newsletter: 'http://tinyletter.com/theatrenout',
     },
     address: {
-      street: '7 rue du 19 mars 1962',
-      city: 'L\'Île-Saint-Denis',
-      postalCode: '93450',
+      street: '3 rue Nationale',
+      city: 'Argent-sur-Sauldre',
+      postalCode: '18410',
       country: 'FR',
-      latitude: '48.936835',
-      longitude: '2.338256',
+      latitude: '47.561371',
+      longitude: '2.447655',
     },
   },
   plugins: [
@@ -68,13 +66,6 @@ module.exports = {
       options: {
         name: `images`,
         path: `${__dirname}/content/images/`,
-      },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `files`,
-        path: `${__dirname}/content/files/`,
       },
     },
     `gatsby-plugin-remove-trailing-slashes`,
