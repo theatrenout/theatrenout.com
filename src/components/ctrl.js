@@ -40,19 +40,24 @@ class Ctrl extends React.Component {
   };
 
   render() {
-    const { alt, type, onClickHandle, ...others} = this.props;
-    return (
-      <CtrlContainer
-        title={alt}
-        onClick={this.onClickHandle}
-        {...others}
-      >
-        <Icon
-          type={type}
+    const { alt, type, onClickHandle, visible, ...others} = this.props;
+    if (visible !== false) {
+      return (
+        <CtrlContainer
           title={alt}
-        />
-      </CtrlContainer>
-    )
+          onClick={this.onClickHandle}
+          {...others}
+        >
+          <Icon
+            type={type}
+            title={alt}
+          />
+        </CtrlContainer>
+      )
+    }
+    else {
+      return null;
+    }
   }
 }
 
