@@ -284,7 +284,7 @@ export const query = graphql`
       }
     }
     page: markdownRemark(
-      fields: { slug: { eq: "/nous-rejoindre/" } }
+      fields: { slug: { eq: "/formations/" } }
       frontmatter: { layout: { eq: "page" } }
     ) {
       fields {
@@ -295,7 +295,7 @@ export const query = graphql`
         image {
           full: childImageSharp {
             fluid(maxWidth: 1920) {
-              ...GatsbyImageSharpFluid_withWebp
+              ...GatsbyImageSharpFluid
             }
           }
         }
