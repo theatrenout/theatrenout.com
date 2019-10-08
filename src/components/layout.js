@@ -149,7 +149,7 @@ export default class Layout extends React.Component {
             menuImage: file(name: {eq: "menu-header"}) {
               full: childImageSharp {
                 fluid(maxWidth: 400) {
-                  ...GatsbyImageSharpFluid_withWebp
+                  ...GatsbyImageSharpFluid
                 }
               }
             }

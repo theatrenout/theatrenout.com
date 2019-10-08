@@ -313,8 +313,14 @@ const Shows = {
     };
   },
 
+  getDateString: function(date) {
+    const dateOptions = { day: 'numeric', month: 'long', year: 'numeric' };
+    let dateString = date.toLocaleDateString('fr-FR', dateOptions);
+    return dateString;
+  },
+
   getDatesString: function(dates) {
-    let datesString = ''
+    let datesString = '';
     dates.forEach(function(date, index, array) {
       const dateOptions = { day: 'numeric' };
       if (index === array.length - 1) {
