@@ -303,7 +303,7 @@ export const query = graphql`
     image: file(name: {eq: "accueil"}) {
       full: childImageSharp {
         fluid(maxWidth: 1920) {
-          ...GatsbyImageSharpFluid_withWebp
+          ...GatsbyImageSharpFluid
         }
       }
     }

@@ -381,14 +381,14 @@ export const query = graphql`
         poster {
           full: childImageSharp {
             fluid(maxHeight: 1080, maxWidth: 764) {
-              ...GatsbyImageSharpFluid_withWebp
+              ...GatsbyImageSharpFluid
             }
           }
         }
         image {
           full: childImageSharp {
             fluid(maxWidth: 1920) {
-              ...GatsbyImageSharpFluid_withWebp
+              ...GatsbyImageSharpFluid
             }
           }
         }

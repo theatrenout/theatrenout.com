@@ -120,12 +120,12 @@ export const markdownFrontmatterFragment = graphql`
         url {
           full: childImageSharp {
             fluid(maxWidth: 1920) {
-              ...GatsbyImageSharpFluid_withWebp
+              ...GatsbyImageSharpFluid
             }
           }
           thumbnail: childImageSharp {
             fluid(maxHeight: 200, maxWidth: 200) {
-              ...GatsbyImageSharpFluid_withWebp
+              ...GatsbyImageSharpFluid
             }
           }
         }

@@ -703,7 +703,7 @@ export const query = graphql`
         image {
           full: childImageSharp {
             fluid(maxWidth: 1920) {
-              ...GatsbyImageSharpFluid_withWebp
+              ...GatsbyImageSharpFluid
             }
           }
         }
@@ -745,14 +745,14 @@ export const query = graphql`
             poster {
               full: childImageSharp {
                 fluid(maxHeight: 230, maxWidth: 163) {
-                  ...GatsbyImageSharpFluid_withWebp
+                  ...GatsbyImageSharpFluid
                 }
               }
             }
             image {
               full: childImageSharp {
                 fluid(maxWidth: 1920) {
-                  ...GatsbyImageSharpFluid_withWebp
+                  ...GatsbyImageSharpFluid
                 }
               }
             }
