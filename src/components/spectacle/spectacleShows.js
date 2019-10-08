@@ -155,15 +155,20 @@ class DatesList extends React.Component {
   }
 
   getDaysString(dates) {
-      if (dates === null || dates.length === 0) {
+      if (dates == null || dates.length === 0) {
         return '';
       }
-      const daysString = Shows.getDatesString(dates);
-      if (dates.length === 1) {
-        return 'Le ' + daysString;
+      if (Array.isArray(dates)) {
+        const daysString = Shows.getDatesString(dates);
+        if (dates.length === 1) {
+          return 'Le ' + daysString;
+        }
+        else {
+          return 'Les ' + daysString;
+        }
       }
       else {
-        return 'Les ' + daysString;
+        return 'Le ' + Shows.getDateString(dates);
       }
   }
 
@@ -303,10 +308,17 @@ class DatesTimes extends React.Component {
               time={dates.time}
               theme={this.props.theme}
             />
-            {!hasOneShow ? (
+            {!hasOneShow && dates.datesToAdd != null ? (
               <DatesList
                 regularWeek={dates.regularWeek}
                 datesToAdd={dates.datesToAdd}
+              />
+            )
+            : null }
+            {!hasOneShow && dates.datesToAdd == null ? (
+              <DatesList
+                regularWeek={dates.regularWeek}
+                datesToAdd={dates.dates}
               />
             )
             : null }
