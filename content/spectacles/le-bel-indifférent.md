@@ -14,10 +14,21 @@ shows:
   dates:
     - time: '20:30'
       days:
-      - '2019-02-09'
-      - '2019-02-16'
-      - '2019-02-23'
-  reservation: 'https://www.billetreduc.com/230043/evt.htm'
+        - '2019-11-29'
+        - '2019-11-30'
+        - '2019-12-06'
+        - '2019-12-07'
+        - '2019-12-13'
+        - '2019-12-14'
+        - '2019-12-20'
+        - '2019-12-21'
+    - time: '16:30'
+      days:
+        - '2019-12-01'
+        - '2019-12-08'
+        - '2019-12-15'
+        - '2019-12-22'
+  reservation: ''
 poster: ../images/donya-affiche.jpg
 image: ../images/bel-indifferent-3.jpg
 trailer: 'https://youtu.be/DU37lHM-FAs'
