@@ -6,7 +6,7 @@ creation: ''
 duration:
   intermission: false
   time: '01:00'
-list: true
+list: false
 categories:
   - Tout public
 poster: ../images/aiglon-affiche.jpg
