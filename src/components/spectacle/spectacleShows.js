@@ -72,7 +72,7 @@ class StartEnd extends React.Component {
       yearFrom = dateFrom.getFullYear().toString();
     }
     const dayFrom = dateFrom.getDate().toString();
-    const monthFrom = MONTHS_LONG[dateTo.getMonth()];
+    const monthFrom = MONTHS_LONG[dateFrom.getMonth()];
 
     return {
       yearFrom: yearFrom,
