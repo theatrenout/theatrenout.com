@@ -16,7 +16,7 @@ module.exports = {
     },
     contact: {
       email: 'accueil@theatrenout.com',
-      portable: '06 89 98 49 41',
+      portable: '06 98 89 49 41',
       socialUsername: 'theatrenout',
       facebook: 'https://www.facebook.com/pages/Th%C3%A9%C3%A2tre-Nout/121789434510665',
       youtube: 'https://www.youtube.com/channel/UCRYte5IjrIGlKYY64qIRDLw',
